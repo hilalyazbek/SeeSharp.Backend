@@ -1,3 +1,0 @@
-﻿<Project>
-  <Import Project="../build/SeeSharp.Api.props" />
-</Project>
