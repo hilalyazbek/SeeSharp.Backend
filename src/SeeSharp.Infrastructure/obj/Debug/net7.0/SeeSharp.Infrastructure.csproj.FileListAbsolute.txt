@@ -1,0 +1,17 @@
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/bin/Debug/net7.0/SeeSharp.Infrastructure.deps.json
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/bin/Debug/net7.0/SeeSharp.Infrastructure.runtimeconfig.json
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/bin/Debug/net7.0/SeeSharp.Infrastructure.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/bin/Debug/net7.0/SeeSharp.Infrastructure.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/bin/Debug/net7.0/SeeSharp.Domain.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/bin/Debug/net7.0/SeeSharp.Domain.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.csproj.AssemblyReference.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.AssemblyInfoInputs.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.AssemblyInfo.cs
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.csproj.CoreCompileInputs.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.csproj.CopyComplete
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/refint/SeeSharp.Infrastructure.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/SeeSharp.Infrastructure.genruntimeconfig.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Infrastructure/obj/Debug/net7.0/ref/SeeSharp.Infrastructure.dll

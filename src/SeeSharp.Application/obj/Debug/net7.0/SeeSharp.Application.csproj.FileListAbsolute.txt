@@ -1,0 +1,12 @@
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/bin/Debug/net7.0/SeeSharp.Application.deps.json
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/bin/Debug/net7.0/SeeSharp.Application.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/bin/Debug/net7.0/SeeSharp.Application.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.csproj.AssemblyReference.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.AssemblyInfoInputs.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.AssemblyInfo.cs
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.csproj.CoreCompileInputs.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/refint/SeeSharp.Application.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/SeeSharp.Application.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Application/obj/Debug/net7.0/ref/SeeSharp.Application.dll

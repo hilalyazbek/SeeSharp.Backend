@@ -1,0 +1,12 @@
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/bin/Debug/net7.0/SeeSharp.Domain.deps.json
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/bin/Debug/net7.0/SeeSharp.Domain.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/bin/Debug/net7.0/SeeSharp.Domain.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.csproj.AssemblyReference.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.GeneratedMSBuildEditorConfig.editorconfig
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.AssemblyInfoInputs.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.AssemblyInfo.cs
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.csproj.CoreCompileInputs.cache
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/refint/SeeSharp.Domain.dll
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/SeeSharp.Domain.pdb
+/Users/hilalyazbek/Software-Development/Github/repos/SeeSharpBlog/Backend/src/SeeSharp.Domain/obj/Debug/net7.0/ref/SeeSharp.Domain.dll
