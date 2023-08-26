@@ -35,5 +35,13 @@ public class BlogPostsController : ControllerBase
     {
         return await _mediatr.Send(command);
     }
+
+    [HttpDelete("id:guid")]
+    public async Task<IResult> DeleteBlogPost(Guid id)
+    {
+        await _mediatr.Send(new DeleteBlogPostCommand(id));
+
+        return Results.NoContent();
+    }
 }
 
