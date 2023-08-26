@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Features.BlogPosts.Commands;
+using SeeSharp.Application.Features.BlogPosts.Queries;
+using SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPosts;
 
 namespace SeeSharp.Api.Controllers;
 
@@ -23,15 +25,9 @@ public class WeatherForecastController : ControllerBase
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
-    public IEnumerable<WeatherForecast> Get()
+    public async Task<List<BlogPostDto>> Get()
     {
-        return Enumerable.Range(1, 5).Select(index => new WeatherForecast
-        {
-            Date = DateOnly.FromDateTime(DateTime.Now.AddDays(index)),
-            TemperatureC = Random.Shared.Next(-20, 55),
-            Summary = Summaries[Random.Shared.Next(Summaries.Length)]
-        })
-        .ToArray();
+        return await _mediatr.Send(new GetBlogPostsQuery());
     }
 
     [HttpPost]
