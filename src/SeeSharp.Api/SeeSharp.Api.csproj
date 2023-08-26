@@ -17,5 +17,8 @@
     <ProjectReference Include="..\SeeSharp.Infrastructure\SeeSharp.Infrastructure.csproj">
       <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
     </ProjectReference>
+    <ProjectReference Include="..\SeeSharp.Application\SeeSharp.Application.csproj">
+      <GlobalPropertiesToRemove></GlobalPropertiesToRemove>
+    </ProjectReference>
   </ItemGroup>
 </Project>

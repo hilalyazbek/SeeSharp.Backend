@@ -1,10 +1,8 @@
-﻿using System;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.AspNetCore.Identity;
 using SeeSharp.Infrastructure.DbContexts;
-using SeeSharp.Domain.Models;
+using SeeSharp.Application.Common.Interfaces;
 
 namespace SeeSharp.Infrastructure;
 

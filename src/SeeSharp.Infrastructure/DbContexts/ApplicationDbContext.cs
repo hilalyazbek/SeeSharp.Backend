@@ -1,7 +1,7 @@
 ﻿using System.Reflection;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.Configuration;
+using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Domain.Models;
 
 namespace SeeSharp.Infrastructure.DbContexts;

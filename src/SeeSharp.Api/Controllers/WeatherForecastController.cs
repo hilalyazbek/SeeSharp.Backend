@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using MediatR;
+using Microsoft.AspNetCore.Mvc;
+using SeeSharp.Application.Features.BlogPosts.Commands;
 
 namespace SeeSharp.Api.Controllers;
 
@@ -6,6 +8,7 @@ namespace SeeSharp.Api.Controllers;
 [Route("[controller]")]
 public class WeatherForecastController : ControllerBase
 {
+    private readonly IMediator _mediatr;
     private static readonly string[] Summaries = new[]
     {
         "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
@@ -13,9 +16,10 @@ public class WeatherForecastController : ControllerBase
 
     private readonly ILogger<WeatherForecastController> _logger;
 
-    public WeatherForecastController(ILogger<WeatherForecastController> logger)
+    public WeatherForecastController(ILogger<WeatherForecastController> logger, IMediator mediatr)
     {
         _logger = logger;
+        _mediatr = mediatr;
     }
 
     [HttpGet(Name = "GetWeatherForecast")]
@@ -28,6 +32,12 @@ public class WeatherForecastController : ControllerBase
             Summary = Summaries[Random.Shared.Next(Summaries.Length)]
         })
         .ToArray();
+    }
+
+    [HttpPost]
+    public async Task<Guid> CreateBlogPost(CreateBlogPostCommand command)
+    {
+        return await _mediatr.Send(command);
     }
 }
 

@@ -9,9 +9,21 @@
   <ItemGroup>
     <None Remove="Common\" />
     <None Remove="Common\Interfaces\" />
+    <None Remove="Features\" />
+    <None Remove="Features\BlogPosts\" />
+    <None Remove="Features\BlogPosts\Commands\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\" />
     <Folder Include="Common\Interfaces\" />
+    <Folder Include="Features\" />
+    <Folder Include="Features\BlogPosts\" />
+    <Folder Include="Features\BlogPosts\Commands\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="MediatR" Version="12.1.1" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SeeSharp.Domain\SeeSharp.Domain.csproj" />
   </ItemGroup>
 </Project>

@@ -23,5 +23,6 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeeSharp.Domain\SeeSharp.Domain.csproj" />
+    <ProjectReference Include="..\SeeSharp.Application\SeeSharp.Application.csproj" />
   </ItemGroup>
 </Project>
