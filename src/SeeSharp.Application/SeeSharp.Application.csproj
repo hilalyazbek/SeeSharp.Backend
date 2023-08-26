@@ -13,7 +13,6 @@
     <None Remove="Features\BlogPosts\" />
     <None Remove="Features\BlogPosts\Commands\" />
     <None Remove="Features\BlogPosts\Queries\" />
-    <None Remove="Features\BlogPosts\Queries\GetBlogPosts\" />
     <None Remove="Common\Mappings\" />
   </ItemGroup>
   <ItemGroup>
@@ -23,7 +22,6 @@
     <Folder Include="Features\BlogPosts\" />
     <Folder Include="Features\BlogPosts\Commands\" />
     <Folder Include="Features\BlogPosts\Queries\" />
-    <Folder Include="Features\BlogPosts\Queries\GetBlogPosts\" />
     <Folder Include="Common\Mappings\" />
   </ItemGroup>
   <ItemGroup>

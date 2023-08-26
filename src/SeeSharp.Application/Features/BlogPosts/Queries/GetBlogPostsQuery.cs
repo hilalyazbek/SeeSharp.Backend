@@ -3,7 +3,6 @@ using AutoMapper.QueryableExtensions;
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPosts;
 
 namespace SeeSharp.Application.Features.BlogPosts.Queries;
 

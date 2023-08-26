@@ -1,6 +1,6 @@
 ﻿using System;
 using AutoMapper;
-using SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPosts;
+using SeeSharp.Application.Features.BlogPosts.Queries;
 using SeeSharp.Domain.Models;
 
 namespace SeeSharp.Application.Common.Mappings;

@@ -1,10 +1,12 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
 
-namespace SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPosts;
+namespace SeeSharp.Application.Features.BlogPosts.Queries;
 
 public class BlogPostDto
 {
+    public Guid Id { get; set; }
+
     public string Title { get; set; } = string.Empty;
 
     public string Category { get; set; } = string.Empty;
