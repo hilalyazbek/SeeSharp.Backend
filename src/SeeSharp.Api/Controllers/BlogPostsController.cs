@@ -36,6 +36,14 @@ public class BlogPostsController : ControllerBase
         return await _mediatr.Send(command);
     }
 
+    [HttpPut("id:guid")]
+    public async Task<IResult> UpdateBlogPost(Guid id, UpdateBlogPostCommand command)
+    {
+        if (id != command.Id) return Results.BadRequest();
+        await _mediatr.Send(command);
+        return Results.NoContent();
+    }
+
     [HttpDelete("id:guid")]
     public async Task<IResult> DeleteBlogPost(Guid id)
     {

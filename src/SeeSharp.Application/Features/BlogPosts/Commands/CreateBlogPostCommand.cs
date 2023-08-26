@@ -1,5 +1,6 @@
 ﻿using System;
 using System.ComponentModel.DataAnnotations;
+using Ardalis.GuardClauses;
 using MediatR;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Domain.Models;
@@ -30,10 +31,10 @@ public class CreateBlogPostCommandHandler : IRequestHandler<CreateBlogPostComman
     {
         var entity = new BlogPost
         {
-            Title = request.Title,
-            Author = request.Author,
-            Category = request.Category,
-            Content = request.Content
+            Title = Guard.Against.NullOrEmpty(request.Title),
+            Author = Guard.Against.NullOrEmpty(request.Author),
+            Category = Guard.Against.NullOrEmpty(request.Category),
+            Content = Guard.Against.NullOrEmpty(request.Content)
         };
 
         _context.BlogPosts.Add(entity);
