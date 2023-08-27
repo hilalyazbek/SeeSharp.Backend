@@ -13,19 +13,28 @@ public class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TR
         _logger = logger;
     }
 
-    public async Task<TResponse> Handle(TRequest request, RequestHandlerDelegate<TResponse> next, CancellationToken cancellationToken)
+    public async Task<TResponse> Handle(
+        TRequest request,
+        RequestHandlerDelegate<TResponse> next,
+        CancellationToken cancellationToken)
     {
         var requestName = typeof(TRequest).Name;
 
         //Request
-        _logger.LogInformation($"Handling {requestName}");
+        _logger.LogInformation(
+            "Handling {Name}. {@Date}",
+            requestName,
+            DateTime.UtcNow);
 
-        var response = await next();
-
+        var result = await next();
+        
         //Response
-        _logger.LogInformation("CleanArchitecture Request: {Name} {@Request}",
-           requestName, request);
+        _logger.LogInformation(
+            "CleanArchitecture Request: {Name} {@request}. {@Date}",
+            requestName,
+            request,
+            DateTime.UtcNow);
 
-        return response;
+        return result;
     }
 }
