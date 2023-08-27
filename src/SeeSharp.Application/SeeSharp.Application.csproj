@@ -16,7 +16,6 @@
     <None Remove="Common\Mappings\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Common\" />
     <Folder Include="Common\Interfaces\" />
     <Folder Include="Features\" />
     <Folder Include="Features\BlogPosts\" />

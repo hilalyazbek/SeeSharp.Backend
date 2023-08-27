@@ -1,5 +1,8 @@
 ﻿using System.Reflection;
+using MediatR;
+using MediatR.Pipeline;
 using Microsoft.Extensions.DependencyInjection;
+using SeeSharp.Application.Common.Behaviors;
 
 namespace SeeSharp.Infrastructure;
 
@@ -13,6 +16,11 @@ public static class DependencyInjection
         {
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
         });
+
+        //MediatR Pipelines
+        services.AddScoped(
+            typeof(IPipelineBehavior<,>),
+            typeof(LoggingPipelineBehavior<,>));
 
         return services;
     }
