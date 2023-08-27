@@ -5,9 +5,9 @@ using MediatR;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Domain.Models;
 
-namespace SeeSharp.Application.Features.BlogPosts.Commands;
+namespace SeeSharp.Application.Features.BlogPosts.Commands.CreateBlogPost;
 
-public record CreateBlogPostCommand() : IRequest <Guid>
+public record CreateBlogPostCommand() : IRequest<Guid>
 {
     public string? Title { get; set; }
 

@@ -1,6 +1,8 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SeeSharp.Application.Features.BlogPosts.Commands;
+using SeeSharp.Application.Features.BlogPosts.Commands.CreateBlogPost;
+using SeeSharp.Application.Features.BlogPosts.Commands.DeleteBlogPost;
+using SeeSharp.Application.Features.BlogPosts.Commands.UpdateBlogPost;
 using SeeSharp.Application.Features.BlogPosts.Queries;
 
 namespace SeeSharp.Api.Controllers;
@@ -9,7 +11,7 @@ namespace SeeSharp.Api.Controllers;
 [Route("[controller]")]
 public class BlogPostsController : ControllerBase
 {
-    private readonly ISender _mediator;
+    private readonly IMediator _mediator;
     private readonly ILogger<BlogPostsController> _logger;
 
     public BlogPostsController(ILogger<BlogPostsController> logger, IMediator mediator)
@@ -48,7 +50,6 @@ public class BlogPostsController : ControllerBase
     public async Task<IResult> DeleteBlogPost(Guid id)
     {
         await _mediator.Send(new DeleteBlogPostCommand(id));
-
         return Results.NoContent();
     }
 }

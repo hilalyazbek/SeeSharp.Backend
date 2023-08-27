@@ -17,14 +17,11 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Interfaces\" />
-    <Folder Include="Features\" />
-    <Folder Include="Features\BlogPosts\" />
-    <Folder Include="Features\BlogPosts\Commands\" />
     <Folder Include="Features\BlogPosts\Queries\" />
     <Folder Include="Common\Mappings\" />
   </ItemGroup>
   <ItemGroup>
-    <PackageReference Include="FluentValidation" Version="11.7.1" />
+    <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
     <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.1.1" />

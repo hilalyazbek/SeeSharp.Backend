@@ -3,7 +3,7 @@ using Ardalis.GuardClauses;
 using MediatR;
 using SeeSharp.Application.Common.Interfaces;
 
-namespace SeeSharp.Application.Features.BlogPosts.Commands;
+namespace SeeSharp.Application.Features.BlogPosts.Commands.UpdateBlogPost;
 
 public record UpdateBlogPostCommand : IRequest
 {
