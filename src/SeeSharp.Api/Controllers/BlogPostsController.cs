@@ -12,11 +12,9 @@ namespace SeeSharp.Api.Controllers;
 public class BlogPostsController : ControllerBase
 {
     private readonly IMediator _mediator;
-    private readonly ILogger<BlogPostsController> _logger;
 
-    public BlogPostsController(ILogger<BlogPostsController> logger, IMediator mediator)
+    public BlogPostsController(IMediator mediator)
     {
-        _logger = logger;
         _mediator = mediator;
     }
 
