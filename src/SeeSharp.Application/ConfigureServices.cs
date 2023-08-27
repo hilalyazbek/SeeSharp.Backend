@@ -12,15 +12,17 @@ public static class DependencyInjection
     {
         services.AddAutoMapper(Assembly.GetExecutingAssembly());
 
-        services.AddMediatR( config =>
+        services.AddMediatR(config =>
         {
             config.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly());
+            config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(LoggingPipelineBehavior<,>));
+            config.AddBehavior(typeof(IPipelineBehavior<,>), typeof(ValidationPipelineBehavior<,>));
         });
 
         //MediatR Pipelines
-        services.AddScoped(
-            typeof(IPipelineBehavior<,>),
-            typeof(LoggingPipelineBehavior<,>));
+        //services.AddScoped(
+        //    typeof(IPipelineBehavior<,>),
+        //    typeof(LoggingPipelineBehavior<,>));
 
         return services;
     }
