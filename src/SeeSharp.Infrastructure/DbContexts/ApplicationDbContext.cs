@@ -8,28 +8,16 @@ namespace SeeSharp.Infrastructure.DbContexts;
 
 public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplicationDbContext
 {
-    public DbSet<BlogPost> BlogPosts { get; set; }
-    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
-
-    //public ApplicationDbContext() : base()
-    //{
-    //}
-
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
     }
 
+    public DbSet<BlogPost> BlogPosts { get; set; }
+    public DbSet<ApplicationUser> ApplicationUsers { get; set; }
+
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
-
         base.OnModelCreating(modelBuilder);
-    }
-
-    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    {
-        optionsBuilder.UseSqlServer("Server=localhost,1433;Database=SeeSharpBlog;User ID=sa;Password=P@ssw0rd;TrustServerCertificate=True");
-        //optionsBuilder.UseSqlServer("Server =.\\SQLExpress; Database = SeeSharpBlog; Trusted_Connection = True; TrustServerCertificate = True");
     }
 }
 
