@@ -4,7 +4,7 @@ using Microsoft.Extensions.Logging;
 using System.Reflection;
 
 namespace SeeSharp.Application.Common.Behaviors;
-public class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
+public sealed class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
 {
     private readonly ILogger<LoggingPipelineBehavior<TRequest, TResponse>> _logger;
 
