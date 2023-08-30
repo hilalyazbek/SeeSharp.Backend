@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Features.BlogPosts.Commands.CreateBlogPost;
 using SeeSharp.Application.Features.BlogPosts.Commands.DeleteBlogPost;
@@ -30,12 +31,14 @@ public class BlogPostsController : ControllerBase
         return await _mediator.Send(new GetBlogPostByIdQuery(id));
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<Guid> CreateBlogPost(CreateBlogPostCommand command)
     {
         return await _mediator.Send(command);
     }
 
+    [Authorize]
     [HttpPut("id:guid")]
     public async Task<IResult> UpdateBlogPost(Guid id, UpdateBlogPostCommand command)
     {
@@ -44,6 +47,7 @@ public class BlogPostsController : ControllerBase
         return Results.NoContent();
     }
 
+    [Authorize]
     [HttpDelete("id:guid")]
     public async Task<IResult> DeleteBlogPost(Guid id)
     {
