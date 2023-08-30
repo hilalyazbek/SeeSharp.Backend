@@ -19,5 +19,10 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     {
         base.OnModelCreating(modelBuilder);
     }
+    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+    {
+        optionsBuilder.UseSqlServer("Server=localhost,1433;Database=SeeSharpBlog;User ID=sa;Password=P@ssw0rd;TrustServerCertificate=True");
+        //optionsBuilder.UseSqlServer("Server =.\\SQLExpress; Database = SeeSharpBlog; Trusted_Connection = True; TrustServerCertificate = True");
+    }
 }
 
