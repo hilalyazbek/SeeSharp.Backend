@@ -2,16 +2,13 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SeeSharp.Application.Common.Interfaces;
-using System;
-using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
 using System.Security.Claims;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace SeeSharp.Infrastructure.Identity;
-internal class TokenGenerator : ITokenGenerator
+
+public class TokenGenerator : ITokenGenerator
 {
     //private readonly string _key;
     //private readonly string _issuer;

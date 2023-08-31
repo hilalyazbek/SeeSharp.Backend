@@ -29,9 +29,9 @@ public static class DependencyInjection
             options.UseSqlServer(connectionString));
 
         services
-            .AddIdentityCore<ApplicationUser>()
-            .AddRoles<IdentityRole>()
-            .AddEntityFrameworkStores<ApplicationDbContext>();
+            .AddIdentity<ApplicationUser, IdentityRole>()
+            .AddEntityFrameworkStores<ApplicationDbContext>()
+            .AddDefaultTokenProviders();
 
         services.Configure<IdentityOptions>(options =>
         {
@@ -52,31 +52,9 @@ public static class DependencyInjection
             options.User.RequireUniqueEmail = true;
         });
 
-        // Add Jwt Token Options
-        var jwtSettings = configuration.GetSection("JwtOptions");
-        services.AddAuthentication(opt =>
-        {
-            opt.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
-            opt.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
-        }).AddJwtBearer(options =>
-        {
-            options.TokenValidationParameters = new TokenValidationParameters
-            {
-                ValidateIssuer = true,
-                ValidateAudience = true,
-                ValidateLifetime = true,
-                ValidateIssuerSigningKey = true,
-                ValidIssuer = jwtSettings["Issuer"],
-                ValidAudience = jwtSettings["Audience"],
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
-                    .GetBytes(jwtSettings.GetSection("Secret").Value!))
-            };
-        });
-
-        
-
         services.AddScoped<IIdentityService, IdentityService>();
 
+        
         return services;
 
     }
