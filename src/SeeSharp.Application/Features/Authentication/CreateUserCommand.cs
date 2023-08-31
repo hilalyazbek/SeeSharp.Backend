@@ -1,5 +1,6 @@
 ﻿using MediatR;
 using SeeSharp.Application.Common.Interfaces;
+using SeeSharp.Application.Common.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -27,8 +28,23 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, strin
 
     public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var (Result, UserId) = await _identityService.CreateUserAsync(request.UserName!, request.Password!);
+        var result = await _identityService.CreateUserAsync(request.UserName!, request.Password!);
 
-        return UserId;
+        if (!result.Result.Succeeded)
+        {
+            var errors = string.Join(Environment.NewLine, result.Result.Errors);
+
+            throw new Exception($"Unable to create {request.UserName}.{Environment.NewLine}{errors}");
+        }
+
+        var addUserToRole = await _identityService.AddToRolesAsync(result.UserId, request.Roles!);
+        if(addUserToRole == null)
+        {
+            var errors = string.Join(Environment.NewLine, addUserToRole!.Errors);
+
+            throw new Exception($"Unable to add {request.UserName} to assigned role/s.{Environment.NewLine}{errors}");
+        }
+
+        return result.UserId;
     }
 }

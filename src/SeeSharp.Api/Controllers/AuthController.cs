@@ -17,8 +17,8 @@ public class AuthController : ControllerBase
         _mediator = mediator;
     }
 
-    [HttpPost]
-    public async Task<string> CreateUser(CreateUserCommand command)
+    [HttpPost("Register")]
+    public async Task<string> CreateUser([FromBody] CreateUserCommand command)
     {
         return await _mediator.Send(command);
     }
