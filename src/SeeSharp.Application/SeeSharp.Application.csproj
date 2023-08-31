@@ -14,11 +14,15 @@
     <None Remove="Features\BlogPosts\Commands\" />
     <None Remove="Features\BlogPosts\Queries\" />
     <None Remove="Common\Mappings\" />
+    <None Remove="Features\Authentication\" />
+    <None Remove="Common\Models\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Common\Interfaces\" />
     <Folder Include="Features\BlogPosts\Queries\" />
     <Folder Include="Common\Mappings\" />
+    <Folder Include="Features\Authentication\" />
+    <Folder Include="Common\Models\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
