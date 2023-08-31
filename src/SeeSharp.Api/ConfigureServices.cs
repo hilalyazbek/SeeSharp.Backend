@@ -41,6 +41,7 @@ public static class DependencyInjection
                 IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8
                     .GetBytes(jwtSettings.GetSection("Secret").Value!))
             };
+>>>>>>> 231fd3e6e8fa3ec0907cdef519988f471a246d80
         });
 
         return services;
