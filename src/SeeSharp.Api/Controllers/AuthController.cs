@@ -1,6 +1,6 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using SeeSharp.Application.Features.Authentication;
+using SeeSharp.Application.Features.Authentication.Commands;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -19,6 +19,12 @@ public class AuthController : ControllerBase
 
     [HttpPost("Register")]
     public async Task<string> CreateUser([FromBody] CreateUserCommand command)
+    {
+        return await _mediator.Send(command);
+    }
+
+    [HttpPost("Login")]
+    public async Task<AuthResponseDto> Login([FromBody] AuthUserCommand command)
     {
         return await _mediator.Send(command);
     }

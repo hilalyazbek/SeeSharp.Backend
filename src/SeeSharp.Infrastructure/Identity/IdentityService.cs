@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SeeSharp.Application.Common.Exceptions;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Application.Common.Models;
 using SeeSharp.Domain.Constants;
@@ -13,19 +14,16 @@ public class IdentityService : IIdentityService
 {
     private readonly UserManager<ApplicationUser> _userManager;
     private readonly RoleManager<IdentityRole> _roleManager;
-    private readonly IUserClaimsPrincipalFactory<ApplicationUser> _userClaimsPrincipalFactory;
-    private readonly IAuthorizationService _authorizationService;
+    private readonly SignInManager<ApplicationUser> _signInManager;
 
     public IdentityService(
         UserManager<ApplicationUser> userManager,
         RoleManager<IdentityRole> roleManager,
-        IUserClaimsPrincipalFactory<ApplicationUser> userClaimsPrincipalFactory,
-        IAuthorizationService authorizationService)
+        SignInManager<ApplicationUser> signInManager)
     {
         _userManager = userManager;
         _roleManager = roleManager;
-        _userClaimsPrincipalFactory = userClaimsPrincipalFactory;
-        _authorizationService = authorizationService;
+        _signInManager = signInManager;
     }
 
     public async Task<string?> GetUserNameAsync(string userId)
@@ -33,6 +31,18 @@ public class IdentityService : IIdentityService
         var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
 
         return user.UserName;
+    }
+
+    public async Task<(string userId, string UserName, string email, IList<string> roles)> GetUserDetailsByUserNameAsync(string userName)
+    {
+        var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == userName);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        var roles = await _userManager.GetRolesAsync(user);
+
+        return (user.Id!, user.UserName!, user.Email!, roles);
     }
 
     public async Task<(Result Result, string UserId)> CreateUserAsync(string userName, string password)
@@ -55,21 +65,13 @@ public class IdentityService : IIdentityService
         return user != null && await _userManager.IsInRoleAsync(user, role);
     }
 
-    public async Task<bool> AuthorizeAsync(string userId, string policyName)
+    public async Task<bool> AuthenticateAsync(string userName, string password)
     {
-        var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
-
-        if (user == null)
-        {
-            return false;
-        }
-
-        var principal = await _userClaimsPrincipalFactory.CreateAsync(user);
-
-        var result = await _authorizationService.AuthorizeAsync(principal, policyName);
+        var result = await _signInManager.PasswordSignInAsync(userName, password, true, false);
 
         return result.Succeeded;
     }
+
 
     public async Task<Result> DeleteUserAsync(string userId)
     {
@@ -106,4 +108,6 @@ public class IdentityService : IIdentityService
 
         return result.ToApplicationResult();
     }
+
+    
 }
