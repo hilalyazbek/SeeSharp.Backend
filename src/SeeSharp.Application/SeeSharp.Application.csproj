@@ -16,11 +16,15 @@
     <None Remove="Common\Mappings\" />
     <None Remove="Features\Authentication\" />
     <None Remove="Common\Models\" />
+    <None Remove="Features\Authentication\Commands\AuthUserCommand\" />
+    <None Remove="Features\Authentication\Commands\CreateUserCommand\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\BlogPosts\Queries\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Models\" />
+    <Folder Include="Features\Authentication\Commands\AuthUserCommand\" />
+    <Folder Include="Features\Authentication\Commands\CreateUserCommand\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />

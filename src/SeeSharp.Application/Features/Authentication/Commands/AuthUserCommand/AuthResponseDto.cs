@@ -1,4 +1,4 @@
-namespace SeeSharp.Application.Features.Authentication.Commands;
+namespace SeeSharp.Application.Features.Authentication.Commands.AuthUserCommand;
 
 public class AuthResponseDto{
     public string? UserId { get; set; }

@@ -8,9 +8,9 @@ using SeeSharp.Domain.Models;
 
 namespace SeeSharp.Application.Features.BlogPosts.Commands.CreateBlogPost;
 
-public class DeleteBlogPostCommandValidator : AbstractValidator<CreateBlogPostCommand>
+public class CreateBlogPostCommandValidator : AbstractValidator<CreateBlogPostCommand>
 {
-    public DeleteBlogPostCommandValidator()
+    public CreateBlogPostCommandValidator()
     {
         RuleFor(v => v.Title)
             .MaximumLength(255)

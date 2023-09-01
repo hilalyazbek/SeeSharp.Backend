@@ -8,7 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeeSharp.Application.Features.Authentication.Commands;
+namespace SeeSharp.Application.Features.Authentication.Commands.AuthUserCommand;
+
 public record AuthUserCommand : IRequest<AuthResponseDto>
 {
     public string? UserName { get; set; }

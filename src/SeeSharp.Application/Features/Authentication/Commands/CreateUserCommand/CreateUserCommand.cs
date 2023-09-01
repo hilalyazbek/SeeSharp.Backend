@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SeeSharp.Application.Features.Authentication.Commands;
+namespace SeeSharp.Application.Features.Authentication.Commands.CreateUserCommand;
 public record CreateUserCommand : IRequest<string>
 {
     public string? FullName { get; set; }
