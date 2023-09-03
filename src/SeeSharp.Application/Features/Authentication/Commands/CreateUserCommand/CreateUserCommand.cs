@@ -14,7 +14,7 @@ public record CreateUserCommand : IRequest<string>
     public string? UserName { get; set; }
     public string? Email { get; set; }
     public string? Password { get; set; }
-    public List<string>? Roles { get; set; }
+    public List<string>? Roles { get; set; } = new List<string> { "Anonymous" };
 }
 
 public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, string>
@@ -28,7 +28,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, strin
 
     public async Task<string> Handle(CreateUserCommand request, CancellationToken cancellationToken)
     {
-        var result = await _identityService.CreateUserAsync(request.UserName!, request.Password!);
+        var result = await _identityService.CreateUserAsync(request.Email!, request.Password!);
 
         if (!result.Result.Succeeded)
         {

@@ -102,8 +102,15 @@ public class IdentityService : IIdentityService
             return Result.Failure(new List<string> { "User not found" });
         }
 
+        foreach(var role in roles)
+        {
+            var roleExist = await _roleManager.RoleExistsAsync(role);
+            if (!roleExist)
+            {
+                await _roleManager.CreateAsync(new IdentityRole(role));
+            }
+        }
         
-
         var result = await _userManager.AddToRolesAsync(user, roles);
 
         return result.ToApplicationResult();
