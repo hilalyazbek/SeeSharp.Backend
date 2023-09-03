@@ -42,6 +42,7 @@ public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthRespo
         return new AuthResponseDto(){
             UserId = userId,
             Name = userName,
+            Roles = roles,
             Token = token
         };
     }
