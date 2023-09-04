@@ -1,4 +1,5 @@
 ﻿using MediatR;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Features.BlogPosts.Commands.CreateBlogPost;
@@ -7,7 +8,6 @@ using SeeSharp.Application.Features.BlogPosts.Commands.UpdateBlogPost;
 using SeeSharp.Application.Features.BlogPosts.Queries;
 
 namespace SeeSharp.Api.Controllers;
-
 [ApiController]
 [Route("[controller]")]
 public class BlogPostsController : ControllerBase
@@ -31,15 +31,15 @@ public class BlogPostsController : ControllerBase
         return await _mediator.Send(new GetBlogPostByIdQuery(id));
     }
 
-    [Authorize]
+    [Authorize("Administrator")]
     [HttpPost]
     public async Task<Guid> CreateBlogPost(CreateBlogPostCommand command)
     {
         return await _mediator.Send(command);
     }
 
-    [Authorize]
-    [HttpPut("id:guid")]
+    [Authorize("Administrator")]
+    [HttpPut("{id:guid}")]
     public async Task<IResult> UpdateBlogPost(Guid id, UpdateBlogPostCommand command)
     {
         if (id != command.Id) return Results.BadRequest();
@@ -47,8 +47,8 @@ public class BlogPostsController : ControllerBase
         return Results.NoContent();
     }
 
-    [Authorize]
-    [HttpDelete("id:guid")]
+    [Authorize("Administrator")]
+    [HttpDelete("{id:guid}")]
     public async Task<IResult> DeleteBlogPost(Guid id)
     {
         await _mediator.Send(new DeleteBlogPostCommand(id));
