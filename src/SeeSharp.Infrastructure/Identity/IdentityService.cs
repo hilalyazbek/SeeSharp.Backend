@@ -33,7 +33,7 @@ public class IdentityService : IIdentityService
         return user.UserName;
     }
 
-    public async Task<(string userId, string UserName, string email, IList<string> roles)> GetUserDetailsByUserNameAsync(string userName)
+    public async Task<(string UserId, string UserName, string Email, IList<string> Roles)> GetUserDetailsByUserNameAsync(string userName)
     {
         var user = await _userManager.Users.FirstOrDefaultAsync(x => x.UserName == userName);
         if (user == null)
