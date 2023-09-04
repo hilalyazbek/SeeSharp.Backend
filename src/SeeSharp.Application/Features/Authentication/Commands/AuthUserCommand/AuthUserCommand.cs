@@ -35,13 +35,14 @@ public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthRespo
             throw new BadRequestException("Invalid username of password");
         }
 
-        var (userId, userName, email, roles) = await _identityService.GetUserDetailsByUserNameAsync(request.UserName!);
+        var (userId, fullName, userName, email, roles) = await _identityService.GetUserDetailsByUserNameAsync(request.UserName!);
 
         string token = _tokenGenerator.GenerateToken(userId,userName,roles);
 
         return new AuthResponseDto(){
             UserId = userId,
-            Name = userName,
+            Name = fullName,
+            Email = email,
             Roles = roles,
             Token = token
         };

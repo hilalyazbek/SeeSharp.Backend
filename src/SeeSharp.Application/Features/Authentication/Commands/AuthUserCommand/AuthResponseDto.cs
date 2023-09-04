@@ -5,6 +5,8 @@ public class AuthResponseDto{
 
     public string? Name { get; set; }
 
+    public string? Email { get; set; }
+
     public IList<string> Roles { get; set; } = new List<string>();
 
     public string? Token { get; set; }
