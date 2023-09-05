@@ -68,7 +68,14 @@ public class IdentityService : IIdentityService
 
     public async Task<bool> AuthenticateAsync(string userName, string password)
     {
-        var result = await _signInManager.PasswordSignInAsync(userName, password, true, false);
+        var user = await _userManager.FindByNameAsync(userName);
+
+        if(user == null)
+        {
+            return false;
+        }
+
+        var result = await _signInManager.PasswordSignInAsync(user, password, true, false);
 
         return result.Succeeded;
     }
