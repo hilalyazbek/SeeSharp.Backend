@@ -31,6 +31,7 @@ app.UseCors();
 
 // Allow httprequest logs in Serilog
 //app.UseSerilogRequestLogging();
+app.UseApiVersioning();
 
 app.UseHttpsRedirection();
 
