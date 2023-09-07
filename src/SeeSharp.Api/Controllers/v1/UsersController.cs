@@ -18,7 +18,7 @@ public class UsersController : ControllerBase
         _mediator = mediator;
     }
     
-    [HttpGet("UserIsInRole")]
+    [HttpPost("UserIsInRole")]
     public async Task<bool> UserIsInRole([FromBody] GetUserRoleQuery query)
     {   
         return await _mediator.Send(query);
