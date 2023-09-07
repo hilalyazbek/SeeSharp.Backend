@@ -8,7 +8,7 @@ using System.Text;
 
 namespace SeeSharp.Infrastructure.Identity;
 
-public class TokenGenerator : ITokenGenerator
+public class JwtUtils : IJwtUtils
 {
     //private readonly string _key;
     //private readonly string _issuer;
@@ -16,7 +16,7 @@ public class TokenGenerator : ITokenGenerator
     //private readonly string _expiryMinutes;
     private readonly IConfiguration _configuration;
 
-    public TokenGenerator(IConfiguration configuration)
+    public JwtUtils(IConfiguration configuration)
     {
         _configuration = configuration;
     }
@@ -54,5 +54,42 @@ public class TokenGenerator : ITokenGenerator
         var encodedToken = new JwtSecurityTokenHandler().WriteToken(token);
 
         return encodedToken;
+    }
+
+    public string ValidateToken(string token)
+    {
+
+        if (token == null)
+            return string.Empty;
+
+        var tokenHandler = new JwtSecurityTokenHandler();
+
+        var jwtSettings = _configuration.GetSection("JwtOptions");
+        Guard.Against.Null(jwtSettings, message: "JwtOptions not found.");
+        var key = Guard.Against.NullOrEmpty(jwtSettings["Secret"], message: "'Secret' not found or empty.");
+        try
+        {
+            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            {
+                ValidateIssuerSigningKey = true,
+                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+                ValidateIssuer = false,
+                ValidateAudience = false,
+                
+                ClockSkew = TimeSpan.Zero
+            }, out SecurityToken validatedToken);
+
+            var jwtToken = (JwtSecurityToken)validatedToken;
+            var userId = (jwtToken.Claims.First(x => x.Type == "UserId").Value);
+
+            // return user id from JWT token if validation successful
+            return userId;
+        }
+        catch
+        {
+            // return null if validation fails
+            return string.Empty;
+        }
+
     }
 }

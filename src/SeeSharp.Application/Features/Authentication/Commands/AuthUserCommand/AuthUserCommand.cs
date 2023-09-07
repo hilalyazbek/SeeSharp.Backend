@@ -19,12 +19,12 @@ public record AuthUserCommand : IRequest<AuthResponseDto>
 public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthResponseDto>
 {
     private readonly IIdentityService _identityService;
-    private readonly ITokenGenerator _tokenGenerator;
+    private readonly IJwtUtils _jwtUtils;
 
-    public AuthUserCommandHandler(IIdentityService identityService, ITokenGenerator tokenGenerator)
+    public AuthUserCommandHandler(IIdentityService identityService, IJwtUtils jwtUtils)
     {
         _identityService = identityService;
-        _tokenGenerator = tokenGenerator;
+        _jwtUtils = jwtUtils;
     }
 
     public async Task<AuthResponseDto> Handle(AuthUserCommand request, CancellationToken cancellationToken)
@@ -37,7 +37,7 @@ public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthRespo
 
         var (userId, fullName, userName, email, roles) = await _identityService.GetUserDetailsByUserNameAsync(request.UserName!);
 
-        string token = _tokenGenerator.GenerateToken(userId, fullName, userName, roles);
+        string token = _jwtUtils.GenerateToken(userId, fullName, userName, roles);
 
         return new AuthResponseDto(){
             UserId = userId,

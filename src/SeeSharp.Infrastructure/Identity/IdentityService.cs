@@ -80,7 +80,6 @@ public class IdentityService : IIdentityService
         return result.Succeeded;
     }
 
-
     public async Task<Result> DeleteUserAsync(string userId)
     {
         var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
@@ -123,6 +122,4 @@ public class IdentityService : IIdentityService
 
         return result.ToApplicationResult();
     }
-
-    
 }

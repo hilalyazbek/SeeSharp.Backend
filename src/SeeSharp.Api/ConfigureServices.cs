@@ -40,7 +40,7 @@ public static class DependencyInjection
 
         services.AddHttpContextAccessor();
 
-        services.AddScoped<ITokenGenerator, TokenGenerator>();
+        services.AddScoped<IJwtUtils, JwtUtils>();
         services.AddScoped<SignInManager<ApplicationUser>>();
 
         return services;
