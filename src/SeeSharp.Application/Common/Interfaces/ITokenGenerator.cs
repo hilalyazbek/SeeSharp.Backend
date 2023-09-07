@@ -7,5 +7,5 @@ using System.Threading.Tasks;
 namespace SeeSharp.Application.Common.Interfaces;
 public interface ITokenGenerator
 {
-    string GenerateToken(string userId, string userName, IList<string> roles);
+    string GenerateToken(string userId,string fullName, string userName, IList<string> roles);
 }

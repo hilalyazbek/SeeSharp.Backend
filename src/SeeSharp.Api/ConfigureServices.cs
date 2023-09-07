@@ -3,6 +3,7 @@ using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SeeSharp.Application.Common.Interfaces;
@@ -14,6 +15,16 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
     {
+        services.AddApiVersioning(options => {
+            options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1,0);
+            options.AssumeDefaultVersionWhenUnspecified = true;
+            options.ReportApiVersions = true;
+            options.ApiVersionReader = new MediaTypeApiVersionReader("v");
+            options.ApiVersionReader = ApiVersionReader.Combine(
+                new UrlSegmentApiVersionReader()
+            );
+        });
+
         services.AddCors(options =>
         {
             options.AddDefaultPolicy(
