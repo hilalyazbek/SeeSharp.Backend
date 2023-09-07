@@ -21,7 +21,7 @@ public class TokenGenerator : ITokenGenerator
         _configuration = configuration;
     }
 
-    public string GenerateToken(string userId, string userName, IList<string> roles)
+    public string GenerateToken(string userId, string fullName, string userName, IList<string> roles)
     {
         var jwtSettings = _configuration.GetSection("JwtOptions");
         Guard.Against.Null(jwtSettings, message: "JwtOptions not found.");
@@ -38,7 +38,7 @@ public class TokenGenerator : ITokenGenerator
         {
             new Claim(JwtRegisteredClaimNames.Sub, userName),
             new Claim(JwtRegisteredClaimNames.Jti, userId),
-            new Claim(ClaimTypes.Name, userName),
+            new Claim("Name", fullName),
             new Claim("UserId", userId),
         };
         claims.AddRange(roles.Select(role => new Claim("Role", role)));

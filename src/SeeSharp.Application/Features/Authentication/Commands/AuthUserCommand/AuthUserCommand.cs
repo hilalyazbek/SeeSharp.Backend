@@ -37,7 +37,7 @@ public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthRespo
 
         var (userId, fullName, userName, email, roles) = await _identityService.GetUserDetailsByUserNameAsync(request.UserName!);
 
-        string token = _tokenGenerator.GenerateToken(userId,userName,roles);
+        string token = _tokenGenerator.GenerateToken(userId, fullName, userName, roles);
 
         return new AuthResponseDto(){
             UserId = userId,
