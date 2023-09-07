@@ -33,9 +33,9 @@ public class AuthController : ControllerBase
         return await _mediator.Send(command);
     }
 
-    [Authorize("Administrator, Anonymous")]
+    // [Authorize("Administrator", "Anonymous")]
     [HttpGet("Validate")]
-    public async Task<string> IsAuthenticated([FromBody] ValidateJwtQuery query)
+    public async Task<List<string>> IsAuthenticated([FromBody]ValidateJwtQuery query)
     {
         return await _mediator.Send(query);
     }

@@ -56,40 +56,43 @@ public class JwtUtils : IJwtUtils
         return encodedToken;
     }
 
-    public string ValidateToken(string token)
+    public List<string> ValidateToken(string token)
     {
 
         if (token == null)
-            return string.Empty;
+            return new List<string>();
 
         var tokenHandler = new JwtSecurityTokenHandler();
 
         var jwtSettings = _configuration.GetSection("JwtOptions");
         Guard.Against.Null(jwtSettings, message: "JwtOptions not found.");
         var key = Guard.Against.NullOrEmpty(jwtSettings["Secret"], message: "'Secret' not found or empty.");
-        try
+
+        tokenHandler.ValidateToken(token, new TokenValidationParameters
         {
-            tokenHandler.ValidateToken(token, new TokenValidationParameters
+            ValidateIssuerSigningKey = true,
+            IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
+            ValidateIssuer = false,
+            ValidateAudience = false,
+
+            ClockSkew = TimeSpan.Zero
+        }, out SecurityToken validatedToken);
+
+        var jwtToken = (JwtSecurityToken)validatedToken;
+        if (jwtToken != null)
+        {
+            var roles = new List<string>();
+            foreach (var claim in jwtToken.Claims)
             {
-                ValidateIssuerSigningKey = true,
-                IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key)),
-                ValidateIssuer = false,
-                ValidateAudience = false,
-                
-                ClockSkew = TimeSpan.Zero
-            }, out SecurityToken validatedToken);
-
-            var jwtToken = (JwtSecurityToken)validatedToken;
-            var userId = (jwtToken.Claims.First(x => x.Type == "UserId").Value);
-
-            // return user id from JWT token if validation successful
-            return userId;
-        }
-        catch
-        {
-            // return null if validation fails
-            return string.Empty;
+                if (claim.Type.ToLower() == "role")
+                {
+                    roles.Add(claim.Value);
+                }
+            }
+            return roles;
         }
 
+        // return user roles from JWT token if validation successful
+        return new List<string>();
     }
 }

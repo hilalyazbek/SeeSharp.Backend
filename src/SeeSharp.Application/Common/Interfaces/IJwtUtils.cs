@@ -8,5 +8,5 @@ namespace SeeSharp.Application.Common.Interfaces;
 public interface IJwtUtils
 {
     string GenerateToken(string userId,string fullName, string userName, IList<string> roles);
-    string ValidateToken(string token);
+    List<string> ValidateToken(string token);
 }

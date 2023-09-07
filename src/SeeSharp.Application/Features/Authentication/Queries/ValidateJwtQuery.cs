@@ -7,9 +7,9 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Features.Authentication.Queries;
-public record ValidateJwtQuery(string Token) : IRequest<string>;
+public record ValidateJwtQuery(string Token) : IRequest<List<string>>;
 
-public class ValidateJwtQueryHandler : IRequestHandler<ValidateJwtQuery, string>
+public class ValidateJwtQueryHandler : IRequestHandler<ValidateJwtQuery, List<string>>
 {
     private readonly IJwtUtils _jwtUtils;
 
@@ -18,7 +18,7 @@ public class ValidateJwtQueryHandler : IRequestHandler<ValidateJwtQuery, string>
         _jwtUtils = jwtUtils;
     }
 
-    public Task<string> Handle(ValidateJwtQuery request, CancellationToken cancellationToken)
+    public Task<List<string>> Handle(ValidateJwtQuery request, CancellationToken cancellationToken)
     {
         return Task.FromResult(_jwtUtils.ValidateToken(request.Token));
     }
