@@ -18,6 +18,8 @@
     <None Remove="Common\Models\" />
     <None Remove="Features\Authentication\Commands\AuthUserCommand\" />
     <None Remove="Features\Authentication\Commands\CreateUserCommand\" />
+    <None Remove="Features\UserManagement\" />
+    <None Remove="Features\UserManagement\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\BlogPosts\Queries\" />
@@ -25,6 +27,8 @@
     <Folder Include="Common\Models\" />
     <Folder Include="Features\Authentication\Commands\AuthUserCommand\" />
     <Folder Include="Features\Authentication\Commands\CreateUserCommand\" />
+    <Folder Include="Features\UserManagement\" />
+    <Folder Include="Features\UserManagement\Queries\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
