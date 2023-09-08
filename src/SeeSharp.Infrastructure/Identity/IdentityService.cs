@@ -59,9 +59,9 @@ public class IdentityService : IIdentityService
         return (result.ToApplicationResult(), user.Id);
     }
 
-    public async Task<bool> IsInRoleAsync(string userName, string role)
+    public async Task<bool> IsInRoleAsync(string userId, string role)
     {
-        var user = _userManager.Users.SingleOrDefault(u => u.UserName == userName);
+        var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
 
         return user != null && await _userManager.IsInRoleAsync(user, role);
     }

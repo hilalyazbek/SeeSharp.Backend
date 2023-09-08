@@ -41,7 +41,7 @@ public class JwtUtils : IJwtUtils
             new Claim("Name", fullName),
             new Claim("UserId", userId),
         };
-        claims.AddRange(roles.Select(role => new Claim("Role", role)));
+        claims.AddRange(roles.Select(role => new Claim(ClaimTypes.Role, role)));
 
         var token = new JwtSecurityToken(
             issuer: issuer,

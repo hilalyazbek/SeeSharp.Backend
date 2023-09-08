@@ -17,10 +17,10 @@ public class UsersController : ControllerBase
     {
         _mediator = mediator;
     }
-    
-    [HttpPost("UserIsInRole")]
-    public async Task<bool> UserIsInRole([FromBody] GetUserRoleQuery query)
-    {   
+
+    [HttpGet("{id}/IsAdmin")]
+    public async Task<bool> IsAdmin(string id){
+        var query = new UserIsAdminQuery(id);
         return await _mediator.Send(query);
     }
 }
