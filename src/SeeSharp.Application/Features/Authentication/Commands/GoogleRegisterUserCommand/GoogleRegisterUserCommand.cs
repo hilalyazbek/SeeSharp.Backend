@@ -1,6 +1,7 @@
 ﻿using Ardalis.GuardClauses;
 using Google.Apis.Auth;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using SeeSharp.Application.Common.Interfaces;
 
@@ -36,7 +37,7 @@ public class GoogleRegisterUserCommandHandler : IRequestHandler<GoogleRegisterUs
             throw new Exception($"Error while authenticating with Google.");
         }
         
-        var result = await _identityService.CreateUserAsync(payload.Name, payload.Email, payload.Email, string.Empty);
+        var result = await _identityService.CreateExternalUserAsync(payload.Name, payload.Email, payload.Email, "Google", clientId, "Google");
 
         if (!result.Result.Succeeded)
         {

@@ -71,6 +71,31 @@ public class IdentityService : IIdentityService
         return (result.ToApplicationResult(), user.Id);
     }
 
+    public async Task<(Result Result, string UserId)> CreateExternalUserAsync(string fullName, string userName, string email, string loginProvider, string providerKey, string providerName)
+    {
+        var user = new ApplicationUser
+        {
+            FullName = fullName,
+            UserName = userName,
+            Email = email,
+        };
+
+        var userExists = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+        if (userExists == null)
+        {
+            var userCreated = await _userManager.CreateAsync(user);
+
+            if (userCreated == null)
+            {
+                return (Result.Failure(new List<string> { "Could not create user" }), "");
+            }
+        }
+        var result = await _userManager.AddLoginAsync(user, new UserLoginInfo(loginProvider, providerKey, providerName));
+
+        return (result.ToApplicationResult(), user.Id);
+    }
+
     public async Task<bool> IsInRoleAsync(string userId, string role)
     {
         var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);

@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Features.Authentication.Commands.AuthUserCommand;
 using SeeSharp.Application.Features.Authentication.Commands.CreateUserCommand;
 using SeeSharp.Application.Features.Authentication.Commands.GoogleAuthUserCommand;
+using SeeSharp.Application.Features.Authentication.Commands.GoogleRegisterUserCommand;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -28,6 +29,12 @@ public class AuthController : ControllerBase
 
     [HttpPost("Login")]
     public async Task<AuthResponseDto> Login([FromBody] AuthUserCommand command)
+    {
+        return await _mediator.Send(command);
+    }
+
+    [HttpPost("RegisterWithGoogle")]
+    public async Task<string> RegisterWithGoogle([FromBody] GoogleRegisterUserCommand command)
     {
         return await _mediator.Send(command);
     }
