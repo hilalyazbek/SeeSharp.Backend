@@ -9,6 +9,8 @@ public interface IIdentityService
 
     Task<(string UserId,string FullName, string UserName, string Email, IList<string> Roles)> GetUserDetailsByUserNameAsync(string userName);
 
+    Task<(string UserId, string FullName, string UserName, string Email, IList<string> Roles)> GetUserDetailsByEmailAsync(string userName);
+
     Task<Result> AddToRolesAsync(string userId, List<string> roles);
 
     Task<bool> IsInRoleAsync(string userId, string role);

@@ -1,11 +1,9 @@
 ﻿using System.Text;
 using Ardalis.GuardClauses;
-using Microsoft.AspNetCore.Authentication.Google;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Infrastructure.Identity;
@@ -26,16 +24,17 @@ public static class DependencyInjection
             );
         });
 
-        services.AddCors(options =>
+        services.AddCors(opt =>
         {
-            options.AddDefaultPolicy(
-                builder =>
-                {
-                    builder.WithOrigins("https://localhost:44351", "http://localhost:4200")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
+            opt.AddPolicy(name: "CorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
         });
+
         AddAuthenticationAndAuthorization(services, configuration);
         
         services.AddAuthentication();
@@ -81,10 +80,10 @@ public static class DependencyInjection
         //    googleOptions.ClientId = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientId"));
         //    googleOptions.ClientSecret = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientSecret"));
         //});
-        
+
         // Add Google Auth
 
-        
+
         //services.AddAuthentication(options =>
         //{
         //    options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;

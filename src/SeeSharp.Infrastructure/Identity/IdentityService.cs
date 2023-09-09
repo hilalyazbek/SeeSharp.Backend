@@ -45,6 +45,18 @@ public class IdentityService : IIdentityService
         return (user.Id!,user.FullName!, user.UserName!, user.Email!, roles);
     }
 
+    public async Task<(string UserId, string FullName, string UserName, string Email, IList<string> Roles)> GetUserDetailsByEmailAsync(string email)
+    {
+        var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == email);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        var roles = await _userManager.GetRolesAsync(user);
+
+        return (user.Id!, user.FullName!, user.UserName!, user.Email!, roles);
+    }
+
     public async Task<(Result Result, string UserId)> CreateUserAsync(string fullName, string userName, string email, string password)
     {
         var user = new ApplicationUser

@@ -20,6 +20,7 @@
     <None Remove="Features\Authentication\Commands\CreateUserCommand\" />
     <None Remove="Features\UserManagement\" />
     <None Remove="Features\UserManagement\Queries\" />
+    <None Remove="Features\Authentication\Commands\GoogleAuthUserCommand\" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Features\BlogPosts\Queries\" />
@@ -29,12 +30,14 @@
     <Folder Include="Features\Authentication\Commands\CreateUserCommand\" />
     <Folder Include="Features\UserManagement\" />
     <Folder Include="Features\UserManagement\Queries\" />
+    <Folder Include="Features\Authentication\Commands\GoogleAuthUserCommand\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />
     <PackageReference Include="MediatR" Version="12.1.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="Ardalis.GuardClauses" Version="4.1.1" />
+    <PackageReference Include="Google.Apis.Auth" Version="1.62.0" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SeeSharp.Domain\SeeSharp.Domain.csproj" />
