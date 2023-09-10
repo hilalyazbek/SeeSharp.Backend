@@ -30,7 +30,6 @@
     <Folder Include="Features\Authentication\Commands\CreateUserCommand\" />
     <Folder Include="Features\UserManagement\" />
     <Folder Include="Features\UserManagement\Queries\" />
-    <Folder Include="Features\Authentication\Commands\GoogleAuthUserCommand\" />
   </ItemGroup>
   <ItemGroup>
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.7.1" />

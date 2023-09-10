@@ -96,6 +96,11 @@ public class IdentityService : IIdentityService
         return (result.ToApplicationResult(), user.Id);
     }
 
+    public async Task<bool> UserExists(string email)
+    {
+        return await _userManager.Users.AnyAsync(x => x.Email == email);
+    }
+
     public async Task<bool> IsInRoleAsync(string userId, string role)
     {
         var user = _userManager.Users.SingleOrDefault(u => u.Id == userId);
@@ -159,4 +164,6 @@ public class IdentityService : IIdentityService
 
         return result.ToApplicationResult();
     }
+
+    
 }

@@ -2,8 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Features.Authentication.Commands.AuthUserCommand;
 using SeeSharp.Application.Features.Authentication.Commands.CreateUserCommand;
-using SeeSharp.Application.Features.Authentication.Commands.GoogleAuthUserCommand;
-using SeeSharp.Application.Features.Authentication.Commands.GoogleRegisterUserCommand;
+using SeeSharp.Application.Features.Authentication.Commands.SignInWithGoogleCommand;
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -33,21 +32,10 @@ public class AuthController : ControllerBase
         return await _mediator.Send(command);
     }
 
-    [HttpPost("RegisterWithGoogle")]
-    public async Task<string> RegisterWithGoogle([FromBody] GoogleRegisterUserCommand command)
+    [HttpPost("SignInWithGoogle")]
+    public async Task<GoogleAuthResponseDto> SignInWithGoogle([FromBody] SignInWithGoogleCommand command)
     {
         return await _mediator.Send(command);
     }
-
-    [HttpPost("LoginWithGoogle")]
-    public async Task<GoogleAuthResponseDto> LoginWithGoogle([FromBody] GoogleAuthUserCommand command)
-    {
-        return await _mediator.Send(command);
-    }
-    //[HttpGet("Validate")]
-    //public async Task<List<string>> IsAuthenticated([FromBody]ValidateJwtQuery query)
-    //{
-    //    return await _mediator.Send(query);
-    //}
 }
 

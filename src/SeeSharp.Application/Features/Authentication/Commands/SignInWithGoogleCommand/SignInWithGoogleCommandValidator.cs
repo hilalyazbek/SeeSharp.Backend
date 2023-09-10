@@ -6,11 +6,11 @@ using MediatR;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Domain.Models;
 
-namespace SeeSharp.Application.Features.Authentication.Commands.AuthUserCommand;
+namespace SeeSharp.Application.Features.Authentication.Commands.SignInWithGoogleCommand;
 
-public class GoogleAuthUserCommandValidator : AbstractValidator<GoogleAuthUserCommand>
+public class SignInWithGoogleCommandValidator : AbstractValidator<SignInWithGoogleCommand>
 {
-    public GoogleAuthUserCommandValidator()
+    public SignInWithGoogleCommandValidator()
     {
         RuleFor(v => v.GoogleToken)
             .NotEmpty();
