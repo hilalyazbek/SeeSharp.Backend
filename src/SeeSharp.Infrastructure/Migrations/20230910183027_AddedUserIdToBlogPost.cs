@@ -5,26 +5,30 @@
 namespace SeeSharp.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedUser : Migration
+    public partial class AddedUserIdToBlogPost : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropColumn(
+                name: "Author",
+                table: "BlogPosts");
+
             migrationBuilder.AddColumn<string>(
-                name: "AuthorId",
+                name: "UserId",
                 table: "BlogPosts",
                 type: "nvarchar(450)",
                 nullable: true);
 
             migrationBuilder.CreateIndex(
-                name: "IX_BlogPosts_AuthorId",
+                name: "IX_BlogPosts_UserId",
                 table: "BlogPosts",
-                column: "AuthorId");
+                column: "UserId");
 
             migrationBuilder.AddForeignKey(
-                name: "FK_BlogPosts_AspNetUsers_AuthorId",
+                name: "FK_BlogPosts_AspNetUsers_UserId",
                 table: "BlogPosts",
-                column: "AuthorId",
+                column: "UserId",
                 principalTable: "AspNetUsers",
                 principalColumn: "Id");
         }
@@ -33,16 +37,23 @@ namespace SeeSharp.Infrastructure.Migrations
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropForeignKey(
-                name: "FK_BlogPosts_AspNetUsers_AuthorId",
+                name: "FK_BlogPosts_AspNetUsers_UserId",
                 table: "BlogPosts");
 
             migrationBuilder.DropIndex(
-                name: "IX_BlogPosts_AuthorId",
+                name: "IX_BlogPosts_UserId",
                 table: "BlogPosts");
 
             migrationBuilder.DropColumn(
-                name: "AuthorId",
+                name: "UserId",
                 table: "BlogPosts");
+
+            migrationBuilder.AddColumn<string>(
+                name: "Author",
+                table: "BlogPosts",
+                type: "nvarchar(max)",
+                nullable: false,
+                defaultValue: "");
         }
     }
 }

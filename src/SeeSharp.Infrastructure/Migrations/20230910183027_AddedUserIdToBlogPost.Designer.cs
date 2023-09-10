@@ -12,8 +12,8 @@ using SeeSharp.Infrastructure.DbContexts;
 namespace SeeSharp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230910102829_AddedUser")]
-    partial class AddedUser
+    [Migration("20230910183027_AddedUserIdToBlogPost")]
+    partial class AddedUserIdToBlogPost
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -232,7 +232,7 @@ namespace SeeSharp.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("AuthorId")
+                    b.Property<string>("UserId")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
@@ -253,12 +253,9 @@ namespace SeeSharp.Infrastructure.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.HasKey("Id");
 
-                    b.HasIndex("AuthorId");
+                    b.HasIndex("UserId");
 
                     b.ToTable("BlogPosts");
                 });
@@ -318,7 +315,7 @@ namespace SeeSharp.Infrastructure.Migrations
                 {
                     b.HasOne("SeeSharp.Domain.Models.ApplicationUser", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("UserId");
 
                     b.Navigation("Author");
                 });
