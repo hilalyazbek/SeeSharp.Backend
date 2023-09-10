@@ -11,7 +11,7 @@ public class BlogPostDto
 
     public string? Category { get; set; }
 
-    public string? Author { get; set; }
+    public string? FullName { get; set; }
 
     public string? Content { get; set; }
 

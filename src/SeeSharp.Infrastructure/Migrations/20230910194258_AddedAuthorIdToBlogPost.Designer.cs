@@ -12,7 +12,7 @@ using SeeSharp.Infrastructure.DbContexts;
 namespace SeeSharp.Infrastructure.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20230910192949_AddedAuthorIdToBlogPost")]
+    [Migration("20230910194258_AddedAuthorIdToBlogPost")]
     partial class AddedAuthorIdToBlogPost
     {
         /// <inheritdoc />
@@ -232,8 +232,8 @@ namespace SeeSharp.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("AuthorId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("AuthorId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -254,6 +254,8 @@ namespace SeeSharp.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("AuthorId");
 
                     b.ToTable("BlogPosts");
                 });
@@ -307,6 +309,15 @@ namespace SeeSharp.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("SeeSharp.Domain.Models.BlogPost", b =>
+                {
+                    b.HasOne("SeeSharp.Domain.Models.ApplicationUser", "Author")
+                        .WithMany()
+                        .HasForeignKey("AuthorId");
+
+                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }
