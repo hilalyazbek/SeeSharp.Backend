@@ -34,8 +34,7 @@ public class CreateBlogPostCommandHandler : IRequestHandler<CreateBlogPostComman
         var entity = new BlogPost
         {
             Title = Guard.Against.NullOrEmpty(request.Title),
-            //Author = Guard.Against.NullOrEmpty(request.Author),
-            // UserId = userId,
+            AuthorId = userId,
             Category = Guard.Against.NullOrEmpty(request.Category),
             Content = Guard.Against.NullOrEmpty(request.Content)
         };

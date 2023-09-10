@@ -229,8 +229,8 @@ namespace SeeSharp.Infrastructure.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("UserId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("AuthorId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("Category")
                         .IsRequired()
@@ -251,8 +251,6 @@ namespace SeeSharp.Infrastructure.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("UserId");
 
                     b.ToTable("BlogPosts");
                 });
@@ -306,15 +304,6 @@ namespace SeeSharp.Infrastructure.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("SeeSharp.Domain.Models.BlogPost", b =>
-                {
-                    b.HasOne("SeeSharp.Domain.Models.ApplicationUser", "Author")
-                        .WithMany()
-                        .HasForeignKey("UserId");
-
-                    b.Navigation("Author");
                 });
 #pragma warning restore 612, 618
         }
