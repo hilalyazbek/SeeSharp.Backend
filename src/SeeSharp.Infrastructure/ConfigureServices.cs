@@ -10,6 +10,7 @@ using SeeSharp.Infrastructure.Identity;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.Data;
+using SeeSharp.Domain.Models;
 
 namespace SeeSharp.Infrastructure;
 
@@ -53,7 +54,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IIdentityService, IdentityService>();
-
+        services.AddScoped<ICurrentUser, CurrentUser>();
         
         return services;
 

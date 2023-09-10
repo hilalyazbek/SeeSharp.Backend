@@ -1,6 +1,7 @@
 ﻿using System;
 using AutoMapper;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
 
 namespace SeeSharp.Application.Features.BlogPosts.Queries;

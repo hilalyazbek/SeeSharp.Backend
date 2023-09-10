@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Versioning;
 using Microsoft.IdentityModel.Tokens;
 using SeeSharp.Application.Common.Interfaces;
+using SeeSharp.Domain.Models;
 using SeeSharp.Infrastructure.Identity;
 
 namespace SeeSharp.Infrastructure;

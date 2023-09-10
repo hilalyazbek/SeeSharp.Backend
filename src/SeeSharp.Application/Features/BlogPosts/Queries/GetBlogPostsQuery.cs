@@ -22,6 +22,7 @@ public class GetBlogPostsQueryHandler : IRequestHandler<GetBlogPostsQuery, List<
     public async Task<List<BlogPostDto>> Handle(GetBlogPostsQuery request, CancellationToken cancellationToken)
     {
         return await _context.BlogPosts
+            //.Include(x => x.Author)
             .OrderByDescending(x => x.DateCreated)
             .ProjectTo<BlogPostDto>(_mapper.ConfigurationProvider)
             .ToListAsync(cancellationToken);

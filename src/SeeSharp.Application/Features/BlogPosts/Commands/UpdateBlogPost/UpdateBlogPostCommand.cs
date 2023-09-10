@@ -38,7 +38,7 @@ public class UpdateBlogPostCommandHandler : IRequestHandler<UpdateBlogPostComman
 
         entity.Title = Guard.Against.NullOrEmpty(request.Title);
         entity.Category = Guard.Against.NullOrEmpty(request.Category);
-        entity.Author = Guard.Against.NullOrEmpty(request.Author);
+        //entity.Author = Guard.Against.NullOrEmpty(request.Author);
         entity.Content = Guard.Against.NullOrEmpty(request.Content);
 
         await _context.SaveChangesAsync(cancellationToken);

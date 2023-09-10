@@ -1,12 +1,10 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Exceptions;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Application.Common.Models;
 using SeeSharp.Domain.Constants;
-using SeeSharp.Infrastructure.Identity;
-using System.Data;
+using SeeSharp.Domain.Models;
 
 namespace SeeSharp.Infrastructure.Identity;
 
