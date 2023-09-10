@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc.Versioning;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Infrastructure.Identity;
@@ -25,17 +24,19 @@ public static class DependencyInjection
             );
         });
 
-        services.AddCors(options =>
+        services.AddCors(opt =>
         {
-            options.AddDefaultPolicy(
-                builder =>
-                {
-                    builder.WithOrigins("https://localhost:44351", "http://localhost:4200")
-                        .AllowAnyHeader()
-                        .AllowAnyMethod();
-                });
+            opt.AddPolicy(name: "CorsPolicy", builder =>
+            {
+                builder.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                    .AllowAnyHeader()
+                    .AllowAnyMethod()
+                    .AllowCredentials();
+            });
         });
+
         AddAuthenticationAndAuthorization(services, configuration);
+        
         services.AddAuthentication();
 
         services.AddHttpContextAccessor();
@@ -50,6 +51,7 @@ public static class DependencyInjection
     {
         // Add Jwt Token Options
         var jwtSettings = Guard.Against.Null(configuration.GetSection("JwtOptions"));
+        var googleAuthSettings = Guard.Against.Null(configuration.GetSection("GoogleAuthOptions"));
 
         var secret = Guard.Against.NullOrEmpty(jwtSettings.GetValue<string>("Secret"));
         var issuer = Guard.Against.NullOrEmpty(jwtSettings.GetValue<string>("Issuer"));
@@ -73,6 +75,24 @@ public static class DependencyInjection
                 ValidAudience = audience
             };
         });
+        //.AddGoogle(googleOptions =>
+        //{
+        //    googleOptions.ClientId = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientId"));
+        //    googleOptions.ClientSecret = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientSecret"));
+        //});
+
+        // Add Google Auth
+
+
+        //services.AddAuthentication(options =>
+        //{
+        //    options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
+        //    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
+        //}).AddGoogle(googleOptions =>
+        //{
+        //    googleOptions.ClientId = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientId"));
+        //    googleOptions.ClientSecret = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientSecret"));
+        //});
 
         services.AddAuthorization(options =>
         {

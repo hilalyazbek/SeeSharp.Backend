@@ -45,6 +45,18 @@ public class IdentityService : IIdentityService
         return (user.Id!,user.FullName!, user.UserName!, user.Email!, roles);
     }
 
+    public async Task<(string UserId, string FullName, string UserName, string Email, IList<string> Roles)> GetUserDetailsByEmailAsync(string email)
+    {
+        var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == email);
+        if (user == null)
+        {
+            throw new NotFoundException("User not found");
+        }
+        var roles = await _userManager.GetRolesAsync(user);
+
+        return (user.Id!, user.FullName!, user.UserName!, user.Email!, roles);
+    }
+
     public async Task<(Result Result, string UserId)> CreateUserAsync(string fullName, string userName, string email, string password)
     {
         var user = new ApplicationUser
@@ -57,6 +69,36 @@ public class IdentityService : IIdentityService
         var result = await _userManager.CreateAsync(user, password);
 
         return (result.ToApplicationResult(), user.Id);
+    }
+
+    public async Task<(Result Result, string UserId)> CreateExternalUserAsync(string fullName, string userName, string email, string loginProvider, string providerKey, string providerName)
+    {
+        var user = new ApplicationUser
+        {
+            FullName = fullName,
+            UserName = userName,
+            Email = email,
+        };
+
+        var userExists = await _userManager.Users.FirstOrDefaultAsync(x => x.Email == email);
+
+        if (userExists == null)
+        {
+            var userCreated = await _userManager.CreateAsync(user);
+
+            if (userCreated == null)
+            {
+                return (Result.Failure(new List<string> { "Could not create user" }), "");
+            }
+        }
+        var result = await _userManager.AddLoginAsync(user, new UserLoginInfo(loginProvider, providerKey, providerName));
+
+        return (result.ToApplicationResult(), user.Id);
+    }
+
+    public async Task<bool> UserExists(string email)
+    {
+        return await _userManager.Users.AnyAsync(x => x.Email == email);
     }
 
     public async Task<bool> IsInRoleAsync(string userId, string role)
@@ -122,4 +164,6 @@ public class IdentityService : IIdentityService
 
         return result.ToApplicationResult();
     }
+
+    
 }
