@@ -13,11 +13,9 @@ public class BlogPost : Entity
     [Required]
     public string Category { get; set; } = string.Empty;
 
-    //[ForeignKey("AuthorId")]
-    //public Guid AuthorId { get; set; }
+    public string AuthorId { get; set; } = string.Empty;
 
-    public ApplicationUser Author { get; set; }
-    //public string Author { get; set; } = string.Empty;
+    public ApplicationUser Author { get; set; } = null!;
 
     public string Content { get; set; } = string.Empty;
 }

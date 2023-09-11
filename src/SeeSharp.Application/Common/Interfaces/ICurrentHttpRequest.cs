@@ -1,11 +1,12 @@
-﻿using System;
+﻿using SeeSharp.Domain.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Common.Interfaces;
-public interface ICurrentUser
+public interface ICurrentHttpRequest
 {
-    Guid GetUserId();
+    string? GetUserId();
 }

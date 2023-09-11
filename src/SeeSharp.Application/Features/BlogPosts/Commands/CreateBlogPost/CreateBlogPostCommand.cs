@@ -19,22 +19,23 @@ public record CreateBlogPostCommand() : IRequest<Guid>
 public class CreateBlogPostCommandHandler : IRequestHandler<CreateBlogPostCommand, Guid>
 {
     private readonly IApplicationDbContext _context;
-    private readonly ICurrentUser _currentUser;
+    private readonly ICurrentHttpRequest _currentHttpRequest;
 
-    public CreateBlogPostCommandHandler(IApplicationDbContext context, ICurrentUser currentUser)
+    public CreateBlogPostCommandHandler(IApplicationDbContext context, ICurrentHttpRequest currentHttpRequest)
     {
         _context = context;
-        _currentUser = currentUser;
+        _currentHttpRequest = currentHttpRequest;
     }
 
     public async Task<Guid> Handle(CreateBlogPostCommand request, CancellationToken cancellationToken)
     {
-        var userId = _currentUser.GetUserId();
-
+        var userId = Guard.Against.NullOrEmpty(_currentHttpRequest.GetUserId());
+        var author = Guard.Against.Null(_context.ApplicationUsers.Find(userId));
         var entity = new BlogPost
         {
             Title = Guard.Against.NullOrEmpty(request.Title),
-            //Author = userId,
+            AuthorId = userId,
+            Author = author,
             Category = Guard.Against.NullOrEmpty(request.Category),
             Content = Guard.Against.NullOrEmpty(request.Content)
         };

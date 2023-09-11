@@ -5,7 +5,7 @@
 namespace SeeSharp.Infrastructure.Migrations
 {
     /// <inheritdoc />
-    public partial class AddedAuthorIdToBlogPost : Migration
+    public partial class AddedAuthorId : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,7 +18,8 @@ namespace SeeSharp.Infrastructure.Migrations
                 name: "AuthorId",
                 table: "BlogPosts",
                 type: "nvarchar(450)",
-                nullable: true);
+                nullable: false,
+                defaultValue: "");
 
             migrationBuilder.CreateIndex(
                 name: "IX_BlogPosts_AuthorId",
@@ -30,7 +31,8 @@ namespace SeeSharp.Infrastructure.Migrations
                 table: "BlogPosts",
                 column: "AuthorId",
                 principalTable: "AspNetUsers",
-                principalColumn: "Id");
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
 
         /// <inheritdoc />

@@ -22,11 +22,7 @@ public class UpdateBlogPostCommandValidator : AbstractValidator<UpdateBlogPostCo
         RuleFor(v => v.Category)
             .MaximumLength(255)
             .NotEmpty();
-
-        RuleFor(v => v.Author)
-            .MaximumLength(100)
-            .NotEmpty();
-
+;
         RuleFor(v => v.Content)
             .NotEmpty();
     }

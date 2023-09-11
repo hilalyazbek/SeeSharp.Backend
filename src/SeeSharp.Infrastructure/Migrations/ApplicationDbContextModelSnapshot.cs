@@ -230,6 +230,7 @@ namespace SeeSharp.Infrastructure.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<string>("AuthorId")
+                        .IsRequired()
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Category")
@@ -312,7 +313,9 @@ namespace SeeSharp.Infrastructure.Migrations
                 {
                     b.HasOne("SeeSharp.Domain.Models.ApplicationUser", "Author")
                         .WithMany()
-                        .HasForeignKey("AuthorId");
+                        .HasForeignKey("AuthorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
 
                     b.Navigation("Author");
                 });

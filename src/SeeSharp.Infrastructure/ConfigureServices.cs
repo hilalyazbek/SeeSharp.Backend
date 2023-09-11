@@ -54,7 +54,7 @@ public static class DependencyInjection
         });
 
         services.AddScoped<IIdentityService, IdentityService>();
-        services.AddScoped<ICurrentUser, CurrentUser>();
+        services.AddScoped<ICurrentHttpRequest, CurrentHttpRequest>();
         
         return services;
 

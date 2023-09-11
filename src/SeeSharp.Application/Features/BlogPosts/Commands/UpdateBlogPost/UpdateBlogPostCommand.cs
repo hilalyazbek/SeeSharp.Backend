@@ -13,11 +13,7 @@ public record UpdateBlogPostCommand : IRequest
 
     public string? Category { get; set; }
 
-    public string? Author { get; set; }
-
     public string? Content { get; set; }
-
-    public string? DateCreated { get; set; }
 }
 
 public class UpdateBlogPostCommandHandler : IRequestHandler<UpdateBlogPostCommand>
@@ -38,7 +34,6 @@ public class UpdateBlogPostCommandHandler : IRequestHandler<UpdateBlogPostComman
 
         entity.Title = Guard.Against.NullOrEmpty(request.Title);
         entity.Category = Guard.Against.NullOrEmpty(request.Category);
-        //entity.Author = Guard.Against.NullOrEmpty(request.Author);
         entity.Content = Guard.Against.NullOrEmpty(request.Content);
 
         await _context.SaveChangesAsync(cancellationToken);
