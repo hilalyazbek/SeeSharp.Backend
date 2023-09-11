@@ -23,7 +23,6 @@
     <None Remove="Features\Authentication\Commands\GoogleAuthUserCommand\" />
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Features\BlogPosts\Queries\" />
     <Folder Include="Common\Mappings\" />
     <Folder Include="Common\Models\" />
     <Folder Include="Features\Authentication\Commands\AuthUserCommand\" />

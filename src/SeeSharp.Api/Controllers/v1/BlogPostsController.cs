@@ -21,9 +21,9 @@ public class BlogPostsController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<List<BlogPostDto>> Get()
+    public async Task<List<BlogPostDto>> Get([FromQuery] BlogPostsQueryParameters queryParameters)
     {
-        return await _mediator.Send(new GetBlogPostsQuery());
+        return await _mediator.Send(new GetBlogPostsQuery(queryParameters));
     }
 
     [HttpGet("{id:guid}")]
