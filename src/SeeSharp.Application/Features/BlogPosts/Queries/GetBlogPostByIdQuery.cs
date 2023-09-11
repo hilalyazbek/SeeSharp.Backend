@@ -31,7 +31,6 @@ public class GetBlogPostByIdQueryHandler : IRequestHandler<GetBlogPostByIdQuery,
             })
             .FirstOrDefaultAsync(itm => itm.Id == request.Id, cancellationToken);
             
-
         return result;            
     }
 }
