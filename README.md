@@ -4,7 +4,7 @@ This repository contains a .NET API for managing blog posts. It is built using .
 
 ## Currently Being Implemented
 
-- **Google Authentication** 🔑
+- **Sorting, Paging, and Filtering Posts** 🔓
 
 ## Features
 
