@@ -28,9 +28,9 @@ public class GetBlogPostsQueryHandler : IRequestHandler<GetBlogPostsQuery, List<
         var query = _context.BlogPosts.AsQueryable();
 
         // Apply filtering
-        if (!string.IsNullOrEmpty(request.QueryParameters.FilterByCategory))
+        if (!string.IsNullOrEmpty(request.QueryParameters.Category))
         {
-            query = query.Where(post => post.Category == request.QueryParameters.FilterByCategory);
+            query = query.Where(post => post.Category == request.QueryParameters.Category);
         }
 
         // Apply sorting
