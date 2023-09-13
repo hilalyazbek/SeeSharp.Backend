@@ -1,11 +1,11 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Common.Models;
+using SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCommand;
 using SeeSharp.Application.Features.UserManagement.Commands.UpdatePasswordCommand;
 using SeeSharp.Application.Features.UserManagement.Commands.UpdateEmailCommand;
-using SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCommand;
 using SeeSharp.Application.Features.UserManagement.Queries;
+
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
