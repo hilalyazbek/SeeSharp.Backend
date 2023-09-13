@@ -4,18 +4,18 @@ using SeeSharp.Domain.Constants;
 
 namespace SeeSharp.Application.Features.UserManagement.Queries;
 
-public record UserIsAdminQuery(string UserId) : IRequest<bool>;
+public record GetUserIsAdminQuery(string UserId) : IRequest<bool>;
 
-public class UserIsAdminQueryHandler : IRequestHandler<UserIsAdminQuery, bool>
+public class GetUserIsAdminQueryHandler : IRequestHandler<GetUserIsAdminQuery, bool>
 {
     private readonly IIdentityService _identityService;
 
-    public UserIsAdminQueryHandler(IIdentityService identityService)
+    public GetUserIsAdminQueryHandler(IIdentityService identityService)
     {
         _identityService = identityService;
     }
 
-    public async Task<bool> Handle(UserIsAdminQuery request, CancellationToken cancellationToken)
+    public async Task<bool> Handle(GetUserIsAdminQuery request, CancellationToken cancellationToken)
     {
         return await _identityService.IsInRoleAsync(request.UserId, Roles.Administrator);
     }

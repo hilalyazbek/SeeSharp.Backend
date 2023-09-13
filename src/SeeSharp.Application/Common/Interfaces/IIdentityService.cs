@@ -5,12 +5,6 @@ namespace SeeSharp.Application.Common.Interfaces;
 
 public interface IIdentityService
 {
-    Task<string?> GetUserNameAsync(string userId);
-
-    Task<(string UserId,string FullName, string UserName, string Email, IList<string> Roles)> GetUserDetailsByUserNameAsync(string userName);
-
-    Task<(string UserId, string FullName, string UserName, string Email, IList<string> Roles)> GetUserDetailsByEmailAsync(string userName);
-    
     Task<bool> UserExists(string email);
 
     Task<Result> AddToRolesAsync(string userId, List<string> roles);
@@ -24,5 +18,9 @@ public interface IIdentityService
     Task<(Result Result, string UserId)> CreateExternalUserAsync(string fullName, string userName, string email, string loginProvider, string providerKey, string providerName);
 
     Task<Result> DeleteUserAsync(string userId);
+
+    Task<Result> UpdatePasswordAsync(string userId, string oldPassword, string newPassword);
+
+    Task<Result> UpdateEmailAsync(string userId, string email);
 }
 
