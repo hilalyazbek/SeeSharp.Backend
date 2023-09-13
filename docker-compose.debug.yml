@@ -1,0 +1,18 @@
+# Please refer https://aka.ms/HTTPSinContainer on how to setup an https developer certificate for your ASP.NET Core service.
+
+version: '3.4'
+
+services:
+  seesharpapi:
+    image: seesharpapi
+    build:
+      context: .
+      dockerfile: src/SeeSharp.Api/Dockerfile
+      args:
+        - configuration=Debug
+    ports:
+      - 7777:7777
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+    volumes:
+      - ~/.vsdbg:/remote_debugger:rw

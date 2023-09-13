@@ -11,5 +11,5 @@ public class BlogPostsQueryParameters
     public int PageSize { get; set; } = 10;
     public string? SortBy { get; set; } = "DateCreated";
     public string? SortDirection { get; set; } = "Desc";
-    public string? FilterByCategory { get; set; }
+    public string? Category { get; set; }
 }
