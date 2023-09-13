@@ -1,13 +1,6 @@
 ﻿using Ardalis.GuardClauses;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Domain.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCommand;
 public class UpdateUserProfileCommand : IRequest
