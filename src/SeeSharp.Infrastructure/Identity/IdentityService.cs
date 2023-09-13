@@ -132,7 +132,7 @@ public class IdentityService : IIdentityService
         return result.ToApplicationResult();
     }
 
-    public async Task<Result> ChangePasswordAsync(string userId, string currentPassword, string newPassword)
+    public async Task<Result> UpdatePasswordAsync(string userId, string currentPassword, string newPassword)
     {
         var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
         if (user == null)
@@ -144,12 +144,17 @@ public class IdentityService : IIdentityService
         return result.ToApplicationResult();
     }
 
-    public async Task<Result> ChangeEmailAsync(string userId, string email, string token)
+    public async Task<Result> UpdateEmailAsync(string userId, string email)
     {
         var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == userId);
         if (user == null)
         {
             throw new NotFoundException("User not found");
+        }
+        var token = await _userManager.GenerateChangeEmailTokenAsync(user, email);
+        if(token == null)
+        {
+            throw new NotFoundException("Invalid change email token");
         }
         var result = await _userManager.ChangeEmailAsync(user, email, token);
 

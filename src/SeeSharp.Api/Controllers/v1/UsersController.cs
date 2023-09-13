@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Common.Models;
+using SeeSharp.Application.Features.UserManagement.Commands.UpdatePasswordCommand;
+using SeeSharp.Application.Features.UserManagement.Commands.UpdateEmailCommand;
 using SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCommand;
 using SeeSharp.Application.Features.UserManagement.Queries;
 
@@ -39,8 +41,18 @@ public class UsersController : ControllerBase
         return Results.NoContent();
     }
 
-    [HttpPost("{id}/ChangePassword")]
-    public async Task<Result> ChangePassword(string id, ChangePasswordCommand command)
+    [HttpPost("{id}/UpdatePassword")]
+    public async Task<Result> UpdatePassword(string id, UpdatePasswordCommand command)
+    {
+        if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
+
+        var result = await _mediator.Send(command);
+
+        return result;
+    }
+
+    [HttpPost("{id}/UpdateEmail")]
+    public async Task<Result> UpdateEmail(string id, UpdateEmailCommand command)
     {
         if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
 

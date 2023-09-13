@@ -19,8 +19,8 @@ public interface IIdentityService
 
     Task<Result> DeleteUserAsync(string userId);
 
-    Task<Result> ChangePasswordAsync(string userId, string oldPassword, string newPassword);
+    Task<Result> UpdatePasswordAsync(string userId, string oldPassword, string newPassword);
 
-    Task<Result> ChangeEmailAsync(string userId, string email, string token);
+    Task<Result> UpdateEmailAsync(string userId, string email);
 }
 
