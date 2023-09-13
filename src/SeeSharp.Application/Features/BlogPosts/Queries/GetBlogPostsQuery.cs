@@ -45,7 +45,6 @@ public class GetBlogPostsQueryHandler : IRequestHandler<GetBlogPostsQuery, List<
         }
         else
         {
-            // Default sorting by Date Created in descending order if no sorting parameter is provided.
             query = query.OrderByDescending(post => post.DateCreated);
         }
 
