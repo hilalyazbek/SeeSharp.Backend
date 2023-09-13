@@ -13,13 +13,15 @@ public class SignInWithGoogleCommandHandler : IRequestHandler<SignInWithGoogleCo
 {
     private readonly IConfiguration _configuration;
     private readonly IIdentityService _identityService;
+    private readonly IApplicationUserService _applicationUserService;
     private readonly IJwtUtils _jwtUtils;
 
-    public SignInWithGoogleCommandHandler(IIdentityService identityService, IJwtUtils jwtUtils, IConfiguration configuration)
+    public SignInWithGoogleCommandHandler(IIdentityService identityService, IJwtUtils jwtUtils, IConfiguration configuration, IApplicationUserService applicationUserService)
     {
         _identityService = identityService;
         _jwtUtils = jwtUtils;
         _configuration = configuration;
+        _applicationUserService = applicationUserService;
     }
 
     public async Task<GoogleAuthResponseDto> Handle(SignInWithGoogleCommand request, CancellationToken cancellationToken)
@@ -56,7 +58,7 @@ public class SignInWithGoogleCommandHandler : IRequestHandler<SignInWithGoogleCo
             }
         }
 
-        var (userId, fullName, userName, email, roles) = await _identityService.GetUserDetailsByEmailAsync(payload.Email);
+        var (userId, fullName, userName, email, roles) = await _applicationUserService.GetUserDetailsByEmailAsync(payload.Email);
 
         string token = _jwtUtils.GenerateToken(userId, fullName, userName, roles);
 
