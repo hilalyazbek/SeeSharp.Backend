@@ -1,6 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using SeeSharp.Application.Common.Models;
 using SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCommand;
 using SeeSharp.Application.Features.UserManagement.Queries;
 
@@ -36,6 +37,16 @@ public class UsersController : ControllerBase
         await _mediator.Send(command);
 
         return Results.NoContent();
+    }
+
+    [HttpPost("{id}/ChangePassword")]
+    public async Task<Result> ChangePassword(string id, ChangePasswordCommand command)
+    {
+        if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
+
+        var result = await _mediator.Send(command);
+
+        return result;
     }
 
     [HttpGet("{id}/IsAdmin")]
