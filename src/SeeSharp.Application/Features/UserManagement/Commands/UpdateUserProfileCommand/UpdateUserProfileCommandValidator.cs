@@ -13,24 +13,9 @@ public class UpdateUserProfileCommandValidator : AbstractValidator<UpdateUserPro
 {
     public UpdateUserProfileCommandValidator()
     {
-        RuleFor(v => v.UserName)
-           .NotEmpty();
-
         RuleFor(v => v.FullName)
             .MaximumLength(255)
             .NotEmpty();
-
-        RuleFor(v => v.OldPassword)
-            .MaximumLength(255)
-            .NotEmpty();
-
-        RuleFor(v => v.NewPassword)
-            .MaximumLength(255)
-            .NotEmpty();
-
-        RuleFor(v => v.UserEmail)
-            .NotEmpty()
-            .EmailAddress();
     }
    
 }

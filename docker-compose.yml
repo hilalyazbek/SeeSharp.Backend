@@ -1,0 +1,20 @@
+version: '3.4'
+
+services:
+  seesharp.api:
+    image: ${DOCKER_REGISTRY-}seesharpapi
+    build:
+      context: .
+      dockerfile: src/SeeSharp.Api/Dockerfile
+    ports:
+      - 7122:7122
+    depends_on:
+      - db
+
+  db:
+    image: "mcr.microsoft.com/mssql/server:2019-latest"
+    ports:
+      - "1450:1433"
+    environment:
+      - SA_PASSWORD: "P@ssw0rd"
+      - ACCEPT_EULA: "Y"
