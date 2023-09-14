@@ -29,13 +29,20 @@
       "label": "watch",
       "command": "dotnet",
       "type": "process",
-      "args": ["watch", "run", "--project", "${workspaceFolder}/SeeSharp.sln"],
+      "args": [
+        "watch",
+        "run",
+        "--project",
+        "${workspaceFolder}/SeeSharp.sln"
+      ],
       "problemMatcher": "$msCompile"
     },
     {
       "type": "docker-build",
       "label": "docker-build: debug",
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "dockerBuild": {
         "tag": "seesharpbackend:dev",
         "target": "base",
@@ -50,14 +57,16 @@
     {
       "type": "docker-build",
       "label": "docker-build: release",
-      "dependsOn": ["build"],
+      "dependsOn": [
+        "build"
+      ],
       "dockerBuild": {
         "tag": "seesharpbackend:latest",
         "dockerfile": "${workspaceFolder}/src/SeeSharp.Api/Dockerfile",
         "context": "${workspaceFolder}",
         "platform": {
           "os": "linux",
-          "architecture": "arm64"
+          "architecture": "amd64"
         },
         "pull": true
       },
@@ -68,7 +77,9 @@
     {
       "type": "docker-run",
       "label": "docker-run: debug",
-      "dependsOn": ["docker-build: debug"],
+      "dependsOn": [
+        "docker-build: debug"
+      ],
       "dockerRun": {},
       "netCore": {
         "appProject": "${workspaceFolder}/src/SeeSharp.Api/SeeSharp.Api.csproj",
@@ -78,7 +89,9 @@
     {
       "type": "docker-run",
       "label": "docker-run: release",
-      "dependsOn": ["docker-build: release"],
+      "dependsOn": [
+        "docker-build: release"
+      ],
       "dockerRun": {},
       "netCore": {
         "appProject": "${workspaceFolder}/src/SeeSharp.Api/SeeSharp.Api.csproj"
