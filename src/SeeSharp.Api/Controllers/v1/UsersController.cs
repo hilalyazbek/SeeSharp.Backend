@@ -32,13 +32,11 @@ public class UsersController : ControllerBase
     }
 
     [HttpPut("{id}")]
-    public async Task<IResult> UpdateUserDetails(string id, UpdateUserProfileCommand command)
+    public async Task<Result> UpdateUserDetails(string id, UpdateUserProfileCommand command)
     {
-        if (id != command.UserId) return Results.BadRequest();
+        if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
 
-        await _mediator.Send(command);
-
-        return Results.NoContent();
+        return await _mediator.Send(command);
     }
 
     [HttpPost("{id}/UpdatePassword")]
@@ -46,9 +44,7 @@ public class UsersController : ControllerBase
     {
         if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
 
-        var result = await _mediator.Send(command);
-
-        return result;
+        return await _mediator.Send(command);
     }
 
     [HttpPost("{id}/UpdateEmail")]
@@ -56,9 +52,7 @@ public class UsersController : ControllerBase
     {
         if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
 
-        var result = await _mediator.Send(command);
-
-        return result;
+        return await _mediator.Send(command);
     }
 
     [HttpGet("{id}/IsAdmin")]

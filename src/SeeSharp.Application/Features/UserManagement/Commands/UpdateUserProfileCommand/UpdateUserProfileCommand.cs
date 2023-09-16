@@ -1,16 +1,17 @@
 ﻿using Ardalis.GuardClauses;
 using MediatR;
 using SeeSharp.Application.Common.Interfaces;
+using SeeSharp.Application.Common.Models;
 
 namespace SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCommand;
-public class UpdateUserProfileCommand : IRequest
+public class UpdateUserProfileCommand : IRequest<Result>
 {
     public string? UserId { get;set; }
 
     public string? FullName { get; set; }
 }
 
-internal class UpdateUserProfileCommandHandler : IRequestHandler<UpdateUserProfileCommand>
+internal class UpdateUserProfileCommandHandler : IRequestHandler<UpdateUserProfileCommand, Result>
 {
     private readonly IApplicationDbContext _context;
 
@@ -19,7 +20,7 @@ internal class UpdateUserProfileCommandHandler : IRequestHandler<UpdateUserProfi
         _context = context;
     }
 
-    public async Task Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
+    public async Task<Result> Handle(UpdateUserProfileCommand request, CancellationToken cancellationToken)
     {
         var entity = await _context.ApplicationUsers
             .FindAsync(new object[] { request.UserId! }, cancellationToken);
@@ -28,6 +29,8 @@ internal class UpdateUserProfileCommandHandler : IRequestHandler<UpdateUserProfi
 
         entity.FullName = request.FullName!;
 
-        await _context.SaveChangesAsync(cancellationToken);
+        var result = await _context.SaveChangesAsync(cancellationToken);
+
+        return result > 0 ? Result.Success() : Result.Failure(new[] { "Failed up update user profile" });
     }
 }
