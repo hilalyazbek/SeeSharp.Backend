@@ -2,10 +2,6 @@
 
 version: '3.4'
 
-networks:
-  dev:
-    driver: bridge
-
 services:
   seesharpapi:
     image: seesharpapi
@@ -13,21 +9,13 @@ services:
       context: .
       dockerfile: src/SeeSharp.Api/Dockerfile
     ports:
-      - 7777:7777
+      - 7777:80
     depends_on:
-      - sql_server_blog
-    networks:
-      - dev
-    environment:
-      - ASPNETCORE_URLS=http://+:7777
-
-  sql_server_blog:
+      - db
+  db:
     image: mcr.microsoft.com/mssql/server:2019-latest
-    container_name: sql_server_blog
     ports:
-      - '1432:1432'
+      - 1444:1433
     environment:
-      - ACCEPT_EULA=y
-      - SA_PASSWORD=P@ssw0rd
-    networks:
-      - dev
+      SA_PASSWORD: P@ssw0rd
+      ACCEPT_EULA: Y

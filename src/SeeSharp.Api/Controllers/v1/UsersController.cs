@@ -5,6 +5,7 @@ using SeeSharp.Application.Features.UserManagement.Commands.UpdateUserProfileCom
 using SeeSharp.Application.Features.UserManagement.Commands.UpdatePasswordCommand;
 using SeeSharp.Application.Features.UserManagement.Commands.UpdateEmailCommand;
 using SeeSharp.Application.Features.UserManagement.Queries;
+using Microsoft.AspNetCore.Authorization;
 
 
 // For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
@@ -14,6 +15,7 @@ namespace SeeSharp.Api.Controllers.v1;
 [ApiController]
 [ApiVersion("1.0")]
 [Route("/api/v{version:apiVersion}/[controller]")]
+[Authorize("Default")]
 public class UsersController : ControllerBase
 {
     private readonly IMediator _mediator;
@@ -34,7 +36,7 @@ public class UsersController : ControllerBase
     [HttpPut("{id}")]
     public async Task<IResult> UpdateUserDetails(string id, UpdateUserProfileCommand command)
     {
-        if (id != command.UserId) return Results.BadRequest();
+        if (id != command.UserId) return Results.BadRequest("UserId mismatch");
 
         await _mediator.Send(command);
 
@@ -46,9 +48,7 @@ public class UsersController : ControllerBase
     {
         if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
 
-        var result = await _mediator.Send(command);
-
-        return result;
+        return await _mediator.Send(command);
     }
 
     [HttpPost("{id}/UpdateEmail")]
@@ -56,9 +56,7 @@ public class UsersController : ControllerBase
     {
         if (id != command.UserId) return Result.Failure(new List<string>{"UserId Mismatch"});
 
-        var result = await _mediator.Send(command);
-
-        return result;
+        return await _mediator.Send(command);
     }
 
     [HttpGet("{id}/IsAdmin")]
