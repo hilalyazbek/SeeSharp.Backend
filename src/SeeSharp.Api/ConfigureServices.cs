@@ -76,24 +76,6 @@ public static class DependencyInjection
                 ValidAudience = audience
             };
         });
-        //.AddGoogle(googleOptions =>
-        //{
-        //    googleOptions.ClientId = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientId"));
-        //    googleOptions.ClientSecret = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientSecret"));
-        //});
-
-        // Add Google Auth
-
-
-        //services.AddAuthentication(options =>
-        //{
-        //    options.DefaultAuthenticateScheme = GoogleDefaults.AuthenticationScheme;
-        //    options.DefaultChallengeScheme = GoogleDefaults.AuthenticationScheme;
-        //}).AddGoogle(googleOptions =>
-        //{
-        //    googleOptions.ClientId = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientId"));
-        //    googleOptions.ClientSecret = Guard.Against.NullOrEmpty(googleAuthSettings.GetValue<string>("ClientSecret"));
-        //});
 
         services.AddAuthorization(options =>
         {
