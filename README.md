@@ -2,9 +2,6 @@
 
 This repository contains a .NET API for managing blog posts. It is built using .NET 7 and follows a clean architecture pattern. The project leverages various technologies and design patterns to ensure a robust and scalable solution.
 
-## Currently Being Implemented
-
-- **Sorting, Paging, and Filtering Posts** 🔓
 
 ## Features
 
