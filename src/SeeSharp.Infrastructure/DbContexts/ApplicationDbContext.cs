@@ -9,7 +9,7 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
 {
     public ApplicationDbContext()
     {
-            
+
     }
     public ApplicationDbContext(DbContextOptions options) : base(options)
     {
@@ -24,7 +24,8 @@ public class ApplicationDbContext : IdentityDbContext<ApplicationUser>, IApplica
     }
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
     {
-        optionsBuilder.UseSqlServer("Server=localhost,1433;Database=SeeSharpBlog;User ID=sa;Password=P@ssw0rd;TrustServerCertificate=True");
+        optionsBuilder.UseSqlServer("Server=tcp:blogpostapi001-server.database.windows.net,1433;Initial Catalog=blogpostapi001-database;Persist Security Info=False;User ID=blogpostapi001-server-admin;Password=65Q4L6X41B362I8O$;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+        // optionsBuilder.UseSqlServer("Server=localhost,1433;Database=SeeSharpBlog;User ID=sa;Password=P@ssw0rd;TrustServerCertificate=True");
         //  optionsBuilder.UseSqlServer("Server =.\\SQLExpress; Database = SeeSharpBlog; Trusted_Connection = True; TrustServerCertificate = True");
     }
 }
