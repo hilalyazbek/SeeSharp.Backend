@@ -1,0 +1,82 @@
+syntax = "proto3";
+
+option csharp_namespace = "SeeSharp.gRPC.Protos";
+
+package blogposts;
+
+
+service BlogPosts{
+	// Create
+    rpc CreateBlogPost(CreateBlogPostRequest) returns (CreateBlogPostResponse) {}
+
+	// Read List
+    rpc GetBlogPosts(GetBlogPostsRequest) returns (GetBlogPostsResponse) {}
+
+	// Read Single
+    rpc GetBlogPostById(GetBlogPostRequest) returns (GetBlogPostReponse){}
+
+	// Update
+    rpc UpdateBlogPost(UpdateBlogPostRequest) returns(empty) {}
+
+	// Delete
+    rpc DeleteBlogPost(DeleteBlogPostRequest) returns(empty){}
+}
+
+message CreateBlogPostRequest{
+    string title = 1;
+
+    string category = 2;
+
+    string author = 3;
+
+    string content = 4;
+}
+
+message CreateBlogPostResponse{
+    string id = 1;
+}
+
+message GetBlogPostRequest{
+    string id = 1;
+}
+
+message GetBlogPostReponse{
+    string id = 1;
+
+    string title = 2;
+
+    string category = 3;
+
+    string author = 4;
+
+    string content = 5;
+
+    string dateCreated = 6;
+}
+
+message GetBlogPostsRequest{}
+
+message GetBlogPostsResponse{
+    repeated GetBlogPostReponse blogPosts = 1;
+}
+
+message UpdateBlogPostRequest{
+    string id = 1;
+
+    string title = 2;
+
+    string category = 3;
+
+    string author = 4;
+
+    string content = 5;
+}
+
+
+message DeleteBlogPostRequest{
+    string id = 1;
+}
+
+message empty{
+
+}

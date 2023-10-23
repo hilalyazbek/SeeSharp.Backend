@@ -1,17 +1,19 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 25.0.1706.3
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34004.107
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp.Api", "src\SeeSharp.Api\SeeSharp.Api.csproj", "{09997EAC-A44E-4A61-9B8F-68D81BA1CFCB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Api", "src\SeeSharp.Api\SeeSharp.Api.csproj", "{09997EAC-A44E-4A61-9B8F-68D81BA1CFCB}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp.Domain", "src\SeeSharp.Domain\SeeSharp.Domain.csproj", "{FABEB15D-DA11-4EFB-93AF-AFD6F8BCBF3C}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Domain", "src\SeeSharp.Domain\SeeSharp.Domain.csproj", "{FABEB15D-DA11-4EFB-93AF-AFD6F8BCBF3C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp.Infrastructure", "src\SeeSharp.Infrastructure\SeeSharp.Infrastructure.csproj", "{C4C1EC0A-0AB9-4912-A655-809E2364A355}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Infrastructure", "src\SeeSharp.Infrastructure\SeeSharp.Infrastructure.csproj", "{C4C1EC0A-0AB9-4912-A655-809E2364A355}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp.Application", "src\SeeSharp.Application\SeeSharp.Application.csproj", "{6BD1784D-FD50-47E8-9519-5967B654FDB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Application", "src\SeeSharp.Application\SeeSharp.Application.csproj", "{6BD1784D-FD50-47E8-9519-5967B654FDB3}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.gRPC", "src\SeeSharp.gRPC\SeeSharp.gRPC.csproj", "{61CBD241-2477-4E48-A29B-83ED6F30D1CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,17 +37,22 @@ Global
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{61CBD241-2477-4E48-A29B-83ED6F30D1CF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{61CBD241-2477-4E48-A29B-83ED6F30D1CF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{61CBD241-2477-4E48-A29B-83ED6F30D1CF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{61CBD241-2477-4E48-A29B-83ED6F30D1CF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
-	EndGlobalSection
-	GlobalSection(ExtensibilityGlobals) = postSolution
-		SolutionGuid = {FC14B0F5-C6EE-463C-BE7A-A585EC0D9A0A}
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
 		{09997EAC-A44E-4A61-9B8F-68D81BA1CFCB} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
 		{FABEB15D-DA11-4EFB-93AF-AFD6F8BCBF3C} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
 		{C4C1EC0A-0AB9-4912-A655-809E2364A355} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
+		{61CBD241-2477-4E48-A29B-83ED6F30D1CF} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {FC14B0F5-C6EE-463C-BE7A-A585EC0D9A0A}
 	EndGlobalSection
 EndGlobal
