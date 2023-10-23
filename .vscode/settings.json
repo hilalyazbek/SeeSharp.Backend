@@ -1,3 +1,5 @@
 {
-  "dotnet.defaultSolution": "SeeSharp.sln"
+  "dotnet.defaultSolution": "SeeSharp.sln",
+  "appService.defaultWebAppToDeploy": "/subscriptions/3beef30f-79d4-49e9-9d89-efbebb9f93cb/resourceGroups/rg-blogpostsapi-we-stg-001/providers/Microsoft.Web/sites/blogpostapi001",
+  "appService.deploySubpath": "src/SeeSharp.Api"
 }
