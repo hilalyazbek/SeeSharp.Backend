@@ -1,25 +1,48 @@
 syntax = "proto3";
 
 option csharp_namespace = "SeeSharp.gRPC.Protos";
+import "google/api/annotations.proto";
 
 package blogposts;
 
 
 service BlogPosts{
 	// Create
-    rpc CreateBlogPost(CreateBlogPostRequest) returns (CreateBlogPostResponse) {}
+    rpc CreateBlogPost(CreateBlogPostRequest) returns (CreateBlogPostResponse) {
+        option (google.api.http) = {
+            post: "/v1/blogposts",
+            body: "*"
+        };
+    }
 
 	// Read List
-    rpc GetBlogPosts(GetBlogPostsRequest) returns (GetBlogPostsResponse) {}
+    rpc GetBlogPosts(GetBlogPostsRequest) returns (GetBlogPostsResponse) {
+        option (google.api.http) = {
+            get: "/v1/blogposts"
+        };
+    }
 
 	// Read Single
-    rpc GetBlogPostById(GetBlogPostRequest) returns (GetBlogPostReponse){}
+    rpc GetBlogPostById(GetBlogPostRequest) returns (GetBlogPostReponse){
+        option (google.api.http) = {
+            get: "/v1/blogposts/{id}"
+        };
+    }
 
 	// Update
-    rpc UpdateBlogPost(UpdateBlogPostRequest) returns(empty) {}
+    rpc UpdateBlogPost(UpdateBlogPostRequest) returns(empty) {
+        option (google.api.http) = {
+            put : "/v1/blogposts",
+            body: "*"
+        };
+    }
 
 	// Delete
-    rpc DeleteBlogPost(DeleteBlogPostRequest) returns(empty){}
+    rpc DeleteBlogPost(DeleteBlogPostRequest) returns(empty){
+        option (google.api.http) = {
+            delete: "/v1/blogposts/{id}"
+        };
+    }
 }
 
 message CreateBlogPostRequest{
