@@ -14,11 +14,13 @@ services:
       - seesharpnetwork
     depends_on:
       - sql_server_blog
-    # environment:
-    #   - 'ConnectionStrings__DefaultConnection=Server=sql_server_blog,1433;Database=SeeSharpBlog;User ID=sa;Password=Passw0rd;TrustServerCertificate=True'
+    environment:
+      - 'ConnectionStrings__DefaultConnection=Server=sql_server_blog,1433;Database=SeeSharpBlog;User ID=sa;Password=P@ssw0rd;TrustServerCertificate=True'
 
   sql_server_blog:
     image: mcr.microsoft.com/mssql/server:2019-latest
+    ports:
+      - 1433:1433
     environment:
       SA_PASSWORD: 'P@ssw0rd'
       ACCEPT_EULA: 'Y'

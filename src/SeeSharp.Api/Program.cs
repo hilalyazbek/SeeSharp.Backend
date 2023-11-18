@@ -1,4 +1,6 @@
-﻿using SeeSharp.Infrastructure;
+﻿using Microsoft.EntityFrameworkCore;
+using SeeSharp.Infrastructure;
+using SeeSharp.Infrastructure.DbContexts;
 using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +36,16 @@ app.UseHttpsRedirection();
 app.UseAuthorization();
 
 app.MapControllers();
-
+ApplyMigration();
 app.Run();
 
+void ApplyMigration()
+{
+    using var scope = app.Services.CreateScope();
+    var _db = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+    if (_db.Database.GetPendingMigrations().Any())
+    {
+        _db.Database.Migrate();
+    }
+}
