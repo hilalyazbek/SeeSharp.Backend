@@ -36,7 +36,7 @@ public class BlogPostsController : ControllerBase
         return await _mediator.Send(command);
     }
 
-    [HttpPut("id:guid")]
+    [HttpPut("{id:guid}")]
     public async Task<IResult> UpdateBlogPost(Guid id, UpdateBlogPostCommand command)
     {
         if (id != command.Id) return Results.BadRequest();
@@ -44,7 +44,7 @@ public class BlogPostsController : ControllerBase
         return Results.NoContent();
     }
 
-    [HttpDelete("id:guid")]
+    [HttpDelete("{id:guid}")]
     public async Task<IResult> DeleteBlogPost(Guid id)
     {
         await _mediator.Send(new DeleteBlogPostCommand(id));
