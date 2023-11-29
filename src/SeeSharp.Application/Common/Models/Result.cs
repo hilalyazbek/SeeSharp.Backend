@@ -23,4 +23,3 @@ public class Result
         return new Result(false, errors);
     }
 }
-

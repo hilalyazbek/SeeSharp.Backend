@@ -23,4 +23,3 @@ public interface IIdentityService
 
     Task<Result> UpdateEmailAsync(string userId, string email);
 }
-

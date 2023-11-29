@@ -15,8 +15,9 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddApiServices(this IServiceCollection services, IConfiguration configuration)
     {
-        services.AddApiVersioning(options => {
-            options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1,0);
+🧹        services.AddApiVersioning(options =>
+        {
+            options.DefaultApiVersion = new Microsoft.AspNetCore.Mvc.ApiVersion(1, 0);
             options.AssumeDefaultVersionWhenUnspecified = true;
             options.ReportApiVersions = true;
             options.ApiVersionReader = new MediaTypeApiVersionReader("v");
@@ -29,7 +30,7 @@ public static class DependencyInjection
         {
             opt.AddPolicy(name: "CorsPolicy", builder =>
             {
-                builder.WithOrigins("http://localhost:4200", "https://localhost:4200")
+                builder.WithOrigins("http://localhost:4200", "http://localhost:5224", "https://localhost:4200")
                     .AllowAnyHeader()
                     .AllowAnyMethod()
                     .AllowCredentials();
@@ -37,7 +38,7 @@ public static class DependencyInjection
         });
 
         AddAuthenticationAndAuthorization(services, configuration);
-        
+
         services.AddAuthentication();
 
         services.AddHttpContextAccessor();
