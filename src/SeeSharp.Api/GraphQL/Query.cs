@@ -9,10 +9,6 @@ namespace SeeSharp.Api.GraphQL;
 public class Query
 {
 
-    public Query()
-    {
-    }
-
     public async Task<List<BlogPostDto>> GetBlogPosts([Service] IMediator mediatr)
     {
         return await mediatr.Send(new GetBlogPostsQuery());
