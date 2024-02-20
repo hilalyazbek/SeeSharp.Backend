@@ -1,11 +1,5 @@
 ﻿using MediatR;
 using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Application.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Features.Authentication.Commands.CreateUserCommand;
 public record CreateUserCommand : IRequest<string>
@@ -38,7 +32,7 @@ public class CreateUserCommandHandler : IRequestHandler<CreateUserCommand, strin
         }
 
         var addUserToRole = await _identityService.AddToRolesAsync(result.UserId, request.Roles!);
-        if(addUserToRole == null)
+        if (addUserToRole == null)
         {
             var errors = string.Join(Environment.NewLine, addUserToRole!.Errors);
 

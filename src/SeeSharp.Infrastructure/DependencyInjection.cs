@@ -1,16 +1,12 @@
-﻿using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
-using Microsoft.EntityFrameworkCore;
+﻿using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using SeeSharp.Infrastructure.DbContexts;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using SeeSharp.Application.Common.Interfaces;
-using Ardalis.GuardClauses;
-using SeeSharp.Infrastructure.Identity;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using System.Data;
 using SeeSharp.Domain.Models;
+using SeeSharp.Infrastructure.DbContexts;
+using SeeSharp.Infrastructure.Identity;
 using SeeSharp.Infrastructure.UserProfiles;
 
 namespace SeeSharp.Infrastructure;
@@ -57,7 +53,7 @@ public static class DependencyInjection
         services.AddScoped<IIdentityService, IdentityService>();
         services.AddScoped<IApplicationUserService, ApplicationUserService>();
         services.AddScoped<ICurrentHttpRequest, CurrentHttpRequest>();
-        
+
         return services;
 
     }

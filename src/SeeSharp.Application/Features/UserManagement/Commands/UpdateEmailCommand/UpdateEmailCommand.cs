@@ -6,9 +6,9 @@ namespace SeeSharp.Application.Features.UserManagement.Commands.UpdateEmailComma
 
 public class UpdateEmailCommand : IRequest<Result>
 {
-    public string? UserId { get;set; }
+    public string? UserId { get; set; }
 
-    public string? Email { get; set;}
+    public string? Email { get; set; }
 }
 
 internal class UpdateEmailCommandHandler : IRequestHandler<UpdateEmailCommand, Result>

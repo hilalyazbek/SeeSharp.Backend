@@ -1,5 +1,4 @@
-﻿using System.Text;
-using Ardalis.GuardClauses;
+﻿using Ardalis.GuardClauses;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
@@ -8,6 +7,7 @@ using Microsoft.IdentityModel.Tokens;
 using SeeSharp.Application.Common.Interfaces;
 using SeeSharp.Domain.Models;
 using SeeSharp.Infrastructure.Identity;
+using System.Text;
 
 namespace SeeSharp.Infrastructure;
 

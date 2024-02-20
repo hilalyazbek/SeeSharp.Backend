@@ -5,9 +5,9 @@ using SeeSharp.Application.Common.Models;
 namespace SeeSharp.Application.Features.UserManagement.Commands.UpdatePasswordCommand;
 public class UpdatePasswordCommand : IRequest<Result>
 {
-    public string? UserId { get;set; }
+    public string? UserId { get; set; }
 
-    public string? OldPassword { get; set;}
+    public string? OldPassword { get; set; }
 
     public string? NewPassword { get; set; }
 }

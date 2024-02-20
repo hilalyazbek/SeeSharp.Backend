@@ -1,11 +1,13 @@
 ﻿using MediatR;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using SeeSharp.Application.Features.BlogPosts.Commands.CreateBlogPost;
 using SeeSharp.Application.Features.BlogPosts.Commands.DeleteBlogPost;
 using SeeSharp.Application.Features.BlogPosts.Commands.UpdateBlogPost;
 using SeeSharp.Application.Features.BlogPosts.Queries;
+using SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostByIdQuery;
+using SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostsQuery;
+using SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostWithParametersQuery;
 
 namespace SeeSharp.Api.Controllers;
 [ApiController]
@@ -18,6 +20,12 @@ public class BlogPostsController : ControllerBase
     public BlogPostsController(IMediator mediator)
     {
         _mediator = mediator;
+    }
+
+    [HttpGet]
+    public async Task<List<BlogPostDto>> Get()
+    {
+        return await _mediator.Send(new GetBlogPostsQuery());
     }
 
     [HttpGet]

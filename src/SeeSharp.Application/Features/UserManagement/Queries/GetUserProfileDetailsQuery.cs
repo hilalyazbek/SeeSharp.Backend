@@ -1,12 +1,6 @@
 ﻿using MediatR;
 using SeeSharp.Application.Common.Exceptions;
 using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Domain.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Features.UserManagement.Queries;
 public record GetUserProfileDetailsQuery(string UserId) : IRequest<ApplicationUserDto>;

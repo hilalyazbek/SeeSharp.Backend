@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
 
-namespace SeeSharp.Application.Features.BlogPosts.Queries;
+namespace SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostWithParametersQuery;
 
 public class GetBlogPostsWithParametersQuery : IRequest<List<BlogPostDto>>
 {

@@ -1,10 +1,4 @@
-﻿using System;
-using System.ComponentModel.DataAnnotations;
-using Ardalis.GuardClauses;
-using FluentValidation;
-using MediatR;
-using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Domain.Models;
+﻿using FluentValidation;
 
 namespace SeeSharp.Application.Features.Authentication.Commands.SignInWithGoogleCommand;
 

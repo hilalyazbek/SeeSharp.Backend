@@ -11,27 +11,27 @@ builder.Services.AddSwaggerGen();
 
 builder.Services
     .AddApiServices(builder.Configuration)
-    .AddGraphQLServices()
     .AddApplicationServices()
-    .AddInfrastructureServices(builder.Configuration);
+    .AddInfrastructureServices(builder.Configuration)
+    .AddGraphQLServices();
 
 
-//builder.Host.UseSerilog((context, configuration) =>
-//    configuration.ReadFrom.Configuration(context.Configuration));
+builder.Host.UseSerilog((context, configuration) =>
+    configuration.ReadFrom.Configuration(context.Configuration));
 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
 {
-    app.UseSwagger();   
+    app.UseSwagger();
     app.UseSwaggerUI();
 }
 
 app.UseCors("CorsPolicy");
 
 // Allow httprequest logs in Serilog
-//app.UseSerilogRequestLogging();
+app.UseSerilogRequestLogging();
 
 app.UseApiVersioning();
 

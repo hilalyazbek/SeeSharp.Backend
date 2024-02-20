@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SeeSharp.Application.Features.BlogPosts.Queries;
+﻿namespace SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostWithParametersQuery;
 public class BlogPostsQueryParameters
 {
     public int Page { get; set; } = 1;

@@ -1,12 +1,6 @@
 ﻿using MediatR;
 using SeeSharp.Application.Common.Exceptions;
 using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Application.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Features.Authentication.Commands.AuthUserCommand;
 
@@ -33,7 +27,8 @@ public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthRespo
     {
         var result = await _identityService.AuthenticateAsync(request.UserName!, request.Password!);
 
-        if(!result){
+        if (!result)
+        {
             throw new BadRequestException("Invalid username of password");
         }
 
@@ -41,7 +36,8 @@ public class AuthUserCommandHandler : IRequestHandler<AuthUserCommand, AuthRespo
 
         string token = _jwtUtils.GenerateToken(userId, fullName, userName, roles);
 
-        return new AuthResponseDto(){
+        return new AuthResponseDto()
+        {
             UserId = userId,
             Name = fullName,
             Email = email,

@@ -2,20 +2,20 @@
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
 
-namespace SeeSharp.Application.Features.BlogPosts.Queries;
+namespace SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostByIdQuery;
 
-public record GetBlogPostsQuery() : IRequest<List<BlogPostDto>>;
+public record GetBlogPostByIdQuery(Guid Id) : IRequest<BlogPostDto>;
 
-public class GetBlogPostsQueryHandler : IRequestHandler<GetBlogPostsQuery, List<BlogPostDto>>
+public class GetBlogPostByIdQueryHandler : IRequestHandler<GetBlogPostByIdQuery, BlogPostDto?>
 {
     private readonly IApplicationDbContext _context;
 
-    public GetBlogPostsQueryHandler(IApplicationDbContext context)
+    public GetBlogPostByIdQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<List<BlogPostDto>> Handle(GetBlogPostsQuery request, CancellationToken cancellationToken)
+    public async Task<BlogPostDto?> Handle(GetBlogPostByIdQuery request, CancellationToken cancellationToken)
     {
         var result = await _context.BlogPosts
             .Select(b => new BlogPostDto
@@ -27,9 +27,8 @@ public class GetBlogPostsQueryHandler : IRequestHandler<GetBlogPostsQuery, List<
                 Content = b.Content,
                 DateCreated = b.DateCreated.ToString("MMMM dd, yyyy")
             })
-            .ToListAsync(cancellationToken);
+            .FirstOrDefaultAsync(itm => itm.Id == request.Id, cancellationToken);
 
         return result;
     }
 }
-
