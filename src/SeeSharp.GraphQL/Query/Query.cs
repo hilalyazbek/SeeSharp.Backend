@@ -13,6 +13,8 @@ public class Query
     {
     }
 
+    [UseFiltering]
+    [UsePaging(IncludeTotalCount = true)]
     public async Task<List<BlogPostDto>> GetBlogPosts([Service] IMediator mediatr)
     {
         return await mediatr.Send(new GetBlogPostsQuery());

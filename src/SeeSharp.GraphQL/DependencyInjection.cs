@@ -8,7 +8,8 @@ public static class DependencyInjection
     {
         services
             .AddGraphQLServer()
-            .AddQueryType<Query>();
+            .AddQueryType<Query>()
+            .AddFiltering();
 
         return services;
     }
