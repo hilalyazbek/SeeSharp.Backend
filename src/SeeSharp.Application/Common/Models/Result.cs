@@ -1,5 +1,4 @@
-﻿using System;
-namespace SeeSharp.Application.Common.Models;
+﻿namespace SeeSharp.Application.Common.Models;
 
 public class Result
 {

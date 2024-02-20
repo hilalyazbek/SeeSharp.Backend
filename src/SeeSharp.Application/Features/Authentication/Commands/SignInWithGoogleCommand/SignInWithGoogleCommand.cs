@@ -37,7 +37,7 @@ public class SignInWithGoogleCommandHandler : IRequestHandler<SignInWithGoogleCo
         var payload = await GoogleJsonWebSignature.ValidateAsync(request.GoogleToken, settings);
 
         var userExists = await _identityService.UserExists(payload.Email);
-        
+
         if (!userExists)
         {
             var result = await _identityService.CreateExternalUserAsync(payload.Name, payload.Email, payload.Email, "Google", payload.JwtId, "Google");

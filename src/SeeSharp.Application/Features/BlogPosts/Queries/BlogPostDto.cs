@@ -1,8 +1,4 @@
-﻿using SeeSharp.Domain.Models;
-using System;
-using System.ComponentModel.DataAnnotations;
-
-namespace SeeSharp.Application.Features.BlogPosts.Queries;
+﻿namespace SeeSharp.Application.Features.BlogPosts.Queries;
 
 public class BlogPostDto
 {

@@ -1,7 +1,5 @@
 ﻿using MediatR;
-using MediatR.Pipeline;
 using Microsoft.Extensions.Logging;
-using System.Reflection;
 
 namespace SeeSharp.Application.Common.Behaviors;
 public sealed class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBehavior<TRequest, TResponse> where TRequest : notnull
@@ -27,7 +25,7 @@ public sealed class LoggingPipelineBehavior<TRequest, TResponse> : IPipelineBeha
             DateTime.UtcNow);
 
         var result = await next();
-        
+
         //Response
         _logger.LogInformation(
             "CleanArchitecture Request: {Name} {@request}. {@Date}",

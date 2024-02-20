@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace SeeSharp.Application.Features.UserManagement.Queries;
+﻿namespace SeeSharp.Application.Features.UserManagement.Queries;
 public class ApplicationUserDto
 {
     public string? UserId { get; set; }

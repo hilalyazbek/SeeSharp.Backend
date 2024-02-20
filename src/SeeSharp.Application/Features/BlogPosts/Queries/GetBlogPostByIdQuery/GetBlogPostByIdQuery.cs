@@ -1,10 +1,8 @@
-﻿using System;
-using AutoMapper;
-using MediatR;
+﻿using MediatR;
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
 
-namespace SeeSharp.Application.Features.BlogPosts.Queries;
+namespace SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostByIdQuery;
 
 public record GetBlogPostByIdQuery(Guid Id) : IRequest<BlogPostDto>;
 
@@ -30,7 +28,7 @@ public class GetBlogPostByIdQueryHandler : IRequestHandler<GetBlogPostByIdQuery,
                 DateCreated = b.DateCreated.ToString("MMMM dd, yyyy")
             })
             .FirstOrDefaultAsync(itm => itm.Id == request.Id, cancellationToken);
-            
-        return result;            
+
+        return result;
     }
 }

@@ -79,7 +79,7 @@ public class IdentityService : IIdentityService
     {
         var user = await _userManager.FindByNameAsync(userName);
 
-        if(user == null)
+        if (user == null)
         {
             return false;
         }
@@ -113,12 +113,12 @@ public class IdentityService : IIdentityService
         }
 
         var user = await _userManager.Users.FirstAsync(u => u.Id == userId);
-        if(user == null)
+        if (user == null)
         {
             return Result.Failure(new List<string> { "User not found" });
         }
 
-        foreach(var role in roles)
+        foreach (var role in roles)
         {
             var roleExist = await _roleManager.RoleExistsAsync(role);
             if (!roleExist)
@@ -126,7 +126,7 @@ public class IdentityService : IIdentityService
                 await _roleManager.CreateAsync(new IdentityRole(role));
             }
         }
-        
+
         var result = await _userManager.AddToRolesAsync(user, roles);
 
         return result.ToApplicationResult();
@@ -152,7 +152,7 @@ public class IdentityService : IIdentityService
             throw new NotFoundException("User not found");
         }
         var token = await _userManager.GenerateChangeEmailTokenAsync(user, email);
-        if(token == null)
+        if (token == null)
         {
             throw new NotFoundException("Invalid change email token");
         }

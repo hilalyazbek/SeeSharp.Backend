@@ -1,6 +1,7 @@
 namespace SeeSharp.Application.Features.Authentication.Commands.SignInWithGoogleCommand;
 
-public class GoogleAuthResponseDto{
+public class GoogleAuthResponseDto
+{
     public string? UserId { get; set; }
 
     public string? Name { get; set; }

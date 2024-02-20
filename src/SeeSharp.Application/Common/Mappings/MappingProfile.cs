@@ -1,5 +1,4 @@
-﻿using System;
-using AutoMapper;
+﻿using AutoMapper;
 using SeeSharp.Application.Features.BlogPosts.Queries;
 using SeeSharp.Domain.Models;
 

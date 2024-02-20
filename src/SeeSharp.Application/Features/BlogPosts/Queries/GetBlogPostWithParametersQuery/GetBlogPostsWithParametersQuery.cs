@@ -2,28 +2,28 @@
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Interfaces;
 
-namespace SeeSharp.Application.Features.BlogPosts.Queries;
+namespace SeeSharp.Application.Features.BlogPosts.Queries.GetBlogPostWithParametersQuery;
 
-public class GetBlogPostsQuery : IRequest<List<BlogPostDto>>
+public class GetBlogPostsWithParametersQuery : IRequest<List<BlogPostDto>>
 {
-    public BlogPostsQueryParameters QueryParameters { get; }
+    public BlogPostsQueryParameters? QueryParameters { get; }
 
-    public GetBlogPostsQuery(BlogPostsQueryParameters queryParameters)
+    public GetBlogPostsWithParametersQuery(BlogPostsQueryParameters? queryParameters)
     {
         QueryParameters = queryParameters;
     }
 }
 
-public class GetBlogPostsQueryHandler : IRequestHandler<GetBlogPostsQuery, List<BlogPostDto>>
+public class GetBlogPostsWithParametersQueryHandler : IRequestHandler<GetBlogPostsWithParametersQuery, List<BlogPostDto>>
 {
     private readonly IApplicationDbContext _context;
 
-    public GetBlogPostsQueryHandler(IApplicationDbContext context)
+    public GetBlogPostsWithParametersQueryHandler(IApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<List<BlogPostDto>> Handle(GetBlogPostsQuery request, CancellationToken cancellationToken)
+    public async Task<List<BlogPostDto>> Handle(GetBlogPostsWithParametersQuery request, CancellationToken cancellationToken)
     {
         var query = _context.BlogPosts.AsQueryable();
 

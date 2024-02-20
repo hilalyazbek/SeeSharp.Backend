@@ -1,10 +1,5 @@
 ﻿using MediatR;
 using SeeSharp.Application.Common.Interfaces;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace SeeSharp.Application.Features.Authentication.Queries;
 public record ValidateJwtQuery(string Token) : IRequest<List<string>>;

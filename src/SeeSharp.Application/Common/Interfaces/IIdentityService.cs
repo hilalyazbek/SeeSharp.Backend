@@ -1,5 +1,4 @@
-﻿using System;
-using SeeSharp.Application.Common.Models;
+﻿using SeeSharp.Application.Common.Models;
 
 namespace SeeSharp.Application.Common.Interfaces;
 

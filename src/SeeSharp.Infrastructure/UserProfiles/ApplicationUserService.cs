@@ -2,9 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using SeeSharp.Application.Common.Exceptions;
 using SeeSharp.Application.Common.Interfaces;
-using SeeSharp.Application.Common.Models;
 using SeeSharp.Domain.Models;
-using SeeSharp.Infrastructure.Identity;
 
 namespace SeeSharp.Infrastructure.UserProfiles;
 internal class ApplicationUserService : IApplicationUserService
@@ -59,5 +57,5 @@ internal class ApplicationUserService : IApplicationUserService
         return (user.Id!, user.FullName!, user.UserName!, user.Email!, roles);
     }
 
-    
+
 }
