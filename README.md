@@ -4,7 +4,7 @@ This repository contains a .NET API for managing blog posts. It is built using .
 
 ## Currently Being Implemented
 
-- **Add gRPC Client and Server** 🔓
+- **Add GraphQL Support using HotChocolate** 🔓
 
 ## Features
 
