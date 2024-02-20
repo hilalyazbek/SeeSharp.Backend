@@ -2,13 +2,18 @@
 
 This repository contains a .NET API for managing blog posts. It is built using .NET 7 and follows a clean architecture pattern. The project leverages various technologies and design patterns to ensure a robust and scalable solution.
 
+## Latest Features
+- Added GraphQL support using HotChocolate
+- Updated solution to .net 8
+- Updated some packages
+
 ## Currently Being Implemented
 
-- **Add GraphQL Support using HotChocolate** 🔓
+- **Refactoring** 🔓
 
 ## Features
 
-- **.NET 7:** This project is built on .NET 7.
+- **.NET 8:** This project is built on .NET 8.
 
 - **Clean Architecture:** The codebase follows the principles of clean architecture, separating concerns into distinct layers to achieve maintainability and testability.
 
@@ -45,6 +50,11 @@ To get started with this project, follow these steps:
 1.  Build and run the application.
 
 1.  Access the API endpoints through the provided Swagger documentation or your preferred API client.
+
+
+## GraphQL
+- Use [server]/graphql to open the GraphQL IDE
+
 
 ## API Endpoints
 
