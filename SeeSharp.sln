@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
-VisualStudioVersion = 17.8.34004.107
+VisualStudioVersion = 17.9.34607.119
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Api", "src\SeeSharp.Api\SeeSharp.Api.csproj", "{09997EAC-A44E-4A61-9B8F-68D81BA1CFCB}"
 EndProject
@@ -12,6 +12,8 @@ EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Infrastructure", "src\SeeSharp.Infrastructure\SeeSharp.Infrastructure.csproj", "{C4C1EC0A-0AB9-4912-A655-809E2364A355}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SeeSharp.Application", "src\SeeSharp.Application\SeeSharp.Application.csproj", "{6BD1784D-FD50-47E8-9519-5967B654FDB3}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SeeSharp.GraphQL", "src\SeeSharp.GraphQL\SeeSharp.GraphQL.csproj", "{DD2714CE-B3DC-4897-A17A-6D8559370B30}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DD2714CE-B3DC-4897-A17A-6D8559370B30}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DD2714CE-B3DC-4897-A17A-6D8559370B30}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DD2714CE-B3DC-4897-A17A-6D8559370B30}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DD2714CE-B3DC-4897-A17A-6D8559370B30}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -44,6 +50,7 @@ Global
 		{FABEB15D-DA11-4EFB-93AF-AFD6F8BCBF3C} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
 		{C4C1EC0A-0AB9-4912-A655-809E2364A355} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
 		{6BD1784D-FD50-47E8-9519-5967B654FDB3} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
+		{DD2714CE-B3DC-4897-A17A-6D8559370B30} = {DD4FA707-399C-42F8-8DA2-7625A1E3BFA2}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {FC14B0F5-C6EE-463C-BE7A-A585EC0D9A0A}
