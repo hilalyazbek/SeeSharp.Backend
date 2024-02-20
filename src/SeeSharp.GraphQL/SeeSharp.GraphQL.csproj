@@ -10,4 +10,8 @@
     <PackageReference Include="HotChocolate.AspNetCore" Version="13.9.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\SeeSharp.Application\SeeSharp.Application.csproj" />
+  </ItemGroup>
+
 </Project>

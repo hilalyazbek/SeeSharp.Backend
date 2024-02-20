@@ -4,7 +4,7 @@ namespace SeeSharp.GraphQL;
 
 public static class DependencyInjection
 {
-    public static IServiceCollection AddApiServices(this IServiceCollection services)
+    public static IServiceCollection AddGraphQLServices(this IServiceCollection services)
     {
         services
             .AddGraphQLServer()
